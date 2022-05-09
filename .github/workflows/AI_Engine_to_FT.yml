@@ -42,6 +42,8 @@ jobs:
     - name: Commit files
       id: commit
       run: |
+        git config --local user.email "$(git log --format='%ae' HEAD^!)"
+        git config --local user.name "$(git log --format='%an' HEAD^!)"
         git add --all
         git commit -am "New FTMAP"
         git push origin HEAD:gh-pages
