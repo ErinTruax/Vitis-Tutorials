@@ -38,6 +38,8 @@ jobs:
             python ftmap.py
             pwd 
             cp index.ftmap ../../../build/html/docs/AI_Engine_Development/
+            cd ../../../build/html/docs/AI_Engine_Development/
+            python handle_html.py
 
 
     - name: setup git config
