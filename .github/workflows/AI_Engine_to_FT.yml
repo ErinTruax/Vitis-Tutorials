@@ -17,7 +17,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2 # Set up Python 3
+    - uses: actions/checkout@v1 # Set up Python 3
     
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -37,23 +37,19 @@ jobs:
             cp ../../ftmap.py .
             echo "Hello World"
             python ftmap.py
+            cd ../../
+            mkdir deploy
+            cp ../../index.ftmap deploy
             
-        
-    - name: Commit files
-      id: commit
-      run: |
-        git add --all
-        git config --local user.email "$(git log --format='%ae' HEAD^!)"
-        git config --local user.name "$(git log --format='%an' HEAD^!)"
-        if [-z "$(git status --porcelain)"]; then
-           echo "::set-output name=push::false"
-        else
-           git commit -m "Add changes" -a
-           echo "::set-output name=push::true"
-        fi
-      shell: bash
-    - name: Push changes
-      if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@gh-pages
-      with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
+    # Deploy
+    - name: Push
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: fluidTopics # The branch name where you want to push the assets
+        FOLDER: deploy   # The directory where your assets are generated
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+        MESSAGE: "Build: ({sha}) {msg}" # The commit message
+      
+            
+  
