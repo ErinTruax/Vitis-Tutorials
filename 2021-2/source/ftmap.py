@@ -116,7 +116,6 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
                     i+=1
             else:
                 i+=1
-        print(sub_files)
         for sub_file in sub_files:
             if "http" in sub_file:
                 continue
