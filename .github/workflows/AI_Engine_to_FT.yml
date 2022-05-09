@@ -17,10 +17,10 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1 # Set up Python 3
+    - uses: actions/checkout@v2 # Set up Python 3
     
     - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: 3.9
 
@@ -42,13 +42,18 @@ jobs:
     - name: Commit files
       id: commit
       run: |
-        git config --local user.email "$(git log --format='%ae' HEAD^!)"
-        git config --local user.name "$(git log --format='%an' HEAD^!)"
-        git remote add github "https://tzx0004:trump#trump1@github.com/tzx0004/Vitis-Tutorials.git"
-        git pull github gh-pages --ff-only
-        git add .
-        if [ -z "$(git status --porcelain)" ]; then
-          exit 0
+        git add --all
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        if [-z "$(git status --porcelain)"]; then
+           echo "::set-output name=push::false"
+        else
+           git commit -m "Add changes" -a
+           echo "::set-output name=push::true"
         fi
-        git commit -m "Fix a[href] in Webflow exported html"
-        git push github HEAD:gh-pages
+      shell: bash
+    - name: Push changes
+      if: steps.commit.outputs.push == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
