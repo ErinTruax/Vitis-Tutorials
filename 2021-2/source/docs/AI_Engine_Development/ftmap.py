@@ -168,7 +168,7 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
     return False
 
         
-check_if_string_in_file("AI_Engine_Development.rst", "TechDocs", tocChild)
+check_if_string_in_file("AI_Engine_Development.rst", "AI Engine Development", tocChild)
 
 
   
