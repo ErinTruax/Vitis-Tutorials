@@ -37,3 +37,13 @@ jobs:
             cp ../../ftmap.py .
             echo "Hello World"
             python ftmap.py
+            
+      # Deploy
+    - name: Push
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: gh-pages # The branch name where you want to push the assets
+        FOLDER: deploy   # The directory where your assets are generated
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+        MESSAGE: "Build: ({sha}) {msg}" # The commit message
