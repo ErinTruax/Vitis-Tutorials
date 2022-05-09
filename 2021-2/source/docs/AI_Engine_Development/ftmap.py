@@ -121,6 +121,8 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
                 continue
             if ".md" not in sub_file:
                 sub_file = sub_file + ".md" 
+            title = sub_file.split(" ")[0]
+            sub_file = sub_file.split(" ")[1]
             if sub_file.startswith("./"):
                 sub_file = sub_file[2:]
             if sub_file.startswith("/"):
@@ -161,7 +163,7 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
                 print("abspath   " + abspath)
                 print("ROOT_DIR  " + ROOT_DIR)
                 print(str(abspath).replace(str(ROOT_DIR), ''))
-                check_if_string_in_file(y, sub_file.replace(".md",""), node, str(abspath).replace(str(ROOT_DIR), ''))
+                check_if_string_in_file(y, title, node, str(abspath).replace(str(ROOT_DIR), ''))
 
     return False
 
