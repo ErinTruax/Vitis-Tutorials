@@ -33,7 +33,7 @@ jobs:
      # run the run.py to get the latest data
       run: |
             cd 2021-2
-            cd source
+            cd source/docs/AI_Engine_Development
             echo "Hello World"
             python ftmap.py
 
