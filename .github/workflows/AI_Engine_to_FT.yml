@@ -43,8 +43,8 @@ jobs:
       id: commit
       run: |
         git add --all
-        git config --local user.email "action@github.com"
-        git config --local user.name "github-actions"
+        git config --local user.email "$(git log --format='%ae' HEAD^!)"
+        git config --local user.name "$(git log --format='%an' HEAD^!)"
         if [-z "$(git status --porcelain)"]; then
            echo "::set-output name=push::false"
         else
@@ -54,6 +54,6 @@ jobs:
       shell: bash
     - name: Push changes
       if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@gh-pages
       with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
