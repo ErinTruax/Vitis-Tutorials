@@ -45,15 +45,5 @@ jobs:
         git add --all
         git config --global user.email "tiantian@xilinx.com"
         git config --global user.name "tzx0004"
-        if [-z "$(git status --porcelain)"]; then
-           echo "::set-output name=push::false"
-        else
-           git commit -m "Add changes" -a
-           echo "::set-output name=push::true"
-        fi
-      shell: bash
-    - name: Push changes
-      if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
+        git commit -am "New FTMAP"
+        git push
