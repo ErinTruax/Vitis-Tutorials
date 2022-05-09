@@ -43,8 +43,6 @@ jobs:
       id: commit
       run: |
         git add --all
-        git remote set-url origin https://tzx0004:trump#trump1@github.com/tzx0004/Vitis-Tutorials.git
-
         git config --global user.name "tzx0004"
         git config --global user.email "103074459+tzx0004@users.noreply.github.com"
         git commit -am "New FTMAP"
