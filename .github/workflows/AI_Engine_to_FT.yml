@@ -17,7 +17,18 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v1 # Set up Python 3
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    # Install sphinx and dependencies
+    - name: install sphinx and dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install docutils==0.16 bs4
     - name: execute py script
      # run the run.py to get the latest data
       run: |
