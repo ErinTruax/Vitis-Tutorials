@@ -23,13 +23,13 @@ Design Tutorials
    :caption: Design Tutorials
    :hidden:
 
-   LeNet Tutorial <./Design_Tutorials/01-aie_lenet_tutorial/README.md>
-   Super Sampling Rate FIR Filters <./Design_Tutorials/02-super_sampling_rate_fir/README.md>
-   Beamforming Design <./Design_Tutorials/03-beamforming/README.md>
-   AIE Emulation on Custom Platforms <./Design_Tutorials/04-custom-platform-emulation/README.md>
-   2D-FFT <./Design_Tutorials/06-fft2d_AIEvsHLS/README.md>
-   FIR Filter <./Design_Tutorials/07-firFilter_AIEvsHLS/README.md>
-   N-Body Simulator <./Design_Tutorials/08-n-body-simulator/README.md>
+   LeNet Tutorial  Design_Tutorials/01-aie_lenet_tutorial/README.md>
+   Super Sampling Rate FIR Filters Design_Tutorials/02-super_sampling_rate_fir/README.md
+   Beamforming Design Design_Tutorials/03-beamforming/README.md
+   AIE Emulation on Custom Platforms /Design_Tutorials/04-custom-platform-emulation/README.md
+   2D-FFT Design_Tutorials/06-fft2d_AIEvsHLS/README.md
+   FIR Filter Design_Tutorials/07-firFilter_AIEvsHLS/README.md
+   N-Body Simulator Design_Tutorials/08-n-body-simulator/README.md
 
 
 
@@ -85,20 +85,20 @@ Feature Tutorials
    :caption: Feature Tutorials
    :hidden:
 
-   A to Z Bare-metal Flow <./Feature_Tutorials/01-aie_a_to_z/README.md>
-   Using GMIO with AIE <./Feature_Tutorials/02-using-gmio/README.md>
-   Runtime Parameter Reconfiguration <./Feature_Tutorials/03-rtp-reconfiguration/README.md>
-   Packet Switching <./Feature_Tutorials/04-packet-switching/README.md>
-   Versal Integration for Hardware Emulation and Hardware <./Feature_Tutorials/05-AI-engine-versal-integration/README.md>
-   Versal System Design Clocking <./Feature_Tutorials/06-versal-system-design-clocking-tutorial/README.md>
-   Using Floating-Point in the AI Engine <./Feature_Tutorials/07-AI-Engine-Floating-Point/README.md>
-   DSP Library Tutorial <./Feature_Tutorials/08-dsp-library/README.md>
-   Debug Walkthrough <./Feature_Tutorials/09-debug-walkthrough/README.md>
-   AI Engine DSP Library and Model Composer Tutorial <./Feature_Tutorials/10-aie-dsp-lib-model-composer/README.md>
-   Versal Emulation Waveform Analysis <./Feature_Tutorials/11-ai-engine-emulation-waveform-analysis/README.md>
-   AXIS External Traffic Generator <./Feature_Tutorials/12-axis-traffic-generator/README.md>
-   AI Engine Performance and Deadlock Analysis Tutorial <./Feature_Tutorials/13-aie-performance-analysis/README.md>
-   Implementing an IIR Filter on the AI Engine <./Feature_Tutorials/14-implementing-iir-filter/README.md>
+   A to Z Bare-metal Flow Feature_Tutorials/01-aie_a_to_z/README.md
+   Using GMIO with AIE Feature_Tutorials/02-using-gmio/README.md
+   Runtime Parameter Reconfiguration Feature_Tutorials/03-rtp-reconfiguration/README.md
+   Packet Switching Feature_Tutorials/04-packet-switching/README.md
+   Versal Integration for Hardware Emulation and Hardware Feature_Tutorials/05-AI-engine-versal-integration/README.md
+   Versal System Design Clocking Feature_Tutorials/06-versal-system-design-clocking-tutorial/README.md
+   Using Floating-Point in the AI Engine Feature_Tutorials/07-AI-Engine-Floating-Point/README.md
+   DSP Library Tutorial Feature_Tutorials/08-dsp-library/README.md
+   Debug Walkthrough Feature_Tutorials/09-debug-walkthrough/README.md
+   AI Engine DSP Library and Model Composer Tutorial Feature_Tutorials/10-aie-dsp-lib-model-composer/README.md
+   Versal Emulation Waveform Analysis Feature_Tutorials/11-ai-engine-emulation-waveform-analysis/README.md
+   AXIS External Traffic Generator Feature_Tutorials/12-axis-traffic-generator/README.md
+   AI Engine Performance and Deadlock Analysis Tutorial Feature_Tutorials/13-aie-performance-analysis/README.md
+   Implementing an IIR Filter on the AI Engine Feature_Tutorials/14-implementing-iir-filter/README.md
 
 
 
