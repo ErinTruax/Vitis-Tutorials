@@ -41,12 +41,15 @@ jobs:
             python ftmap.py
             git add -A
             
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v7
-      with:
-        author_name: tiantian 
-        author_email: tiantian@xilinx.com
-        message: 'Your commit message'
+    - uses: actions/checkout@v2
+    - name: Create report file
+      run: date +%s > report.txt
+    - name: Commit report
+      run: |
+        git config --global user.name 'Tiantian
+        git config --global user.email 'tzx0004ily.github.com'
+        git commit -am "Automated report"
+        git push
       
             
   
