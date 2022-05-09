@@ -36,7 +36,8 @@ jobs:
             cd source/docs/AI_Engine_Development
             echo "Hello World"
             python ftmap.py
-            cp index.ftmap ../../build/html/docs/AI_Engine_Development/
+            pwd 
+            cp index.ftmap ../../../build/html/docs/AI_Engine_Development/
 
 
     - name: setup git config
