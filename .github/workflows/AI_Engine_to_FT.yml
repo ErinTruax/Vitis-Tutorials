@@ -39,17 +39,19 @@ jobs:
             cp ../../ftmap.py .
             echo "Hello World"
             python ftmap.py
-            git add -A
-            
-    - uses: actions/checkout@v2
-    - name: Create report file
-      run: date +%s > report.txt
-    - name: Commit report
+
+
+    - name: setup git config
       run: |
-        git config --global user.name 'Tiantian'
-        git config --global user.email 'tzx0004@users.noreply.github.com'
-        git commit -am "Automated report"
-        git push
-      
+        # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+
+    - name: commit
+      run: |
+        # Stage the file, commit and push
+        git add --all
+        git commit -m "new date commit"
+        git push origin gh-pages
             
   
