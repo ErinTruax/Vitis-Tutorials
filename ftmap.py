@@ -4,8 +4,6 @@ import docutils
 from docutils import parsers
 from docutils.parsers import rst
 from docutils.parsers.rst import directives
-import sphinx
-from sphinx import parsers
 from bs4 import BeautifulSoup
 from xml.dom import minidom
 from os import path
