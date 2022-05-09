@@ -43,7 +43,5 @@ jobs:
       id: commit
       run: |
         git add --all
-        git config --global user.email "tiantian@xilinx.com"
-        git config --global user.name "tzx0004"
         git commit -am "New FTMAP"
         git push origin HEAD:gh-pages
