@@ -1,7 +1,29 @@
 <?xml version="1.0" ?>
 <ft:map ft:editorialType="book" ft:lang="en-US" ft:originID="TechDocs" ft:title="TechDocs" xmlns:ft="http://ref.fluidtopics.com/v3/ft#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ft:toc>
-		<ft:node href="AI_Engine_Development.html" ft:title="TechDocs" type="topics"/>
+		<ft:node href="AI_Engine_Development.html" ft:title="TechDocs" type="topic">
+			<ft:node href="LeNet Tutorial &lt;./Design_Tutorials/01-aie_lenet_tutorial/README.html" ft:title="LeNet Tutorial &lt;./Design_Tutorials/01-aie_lenet_tutorial/README&gt;" type="topics"/>
+			<ft:node href="Super Sampling Rate FIR Filters &lt;./Design_Tutorials/02-super_sampling_rate_fir/README.html" ft:title="Super Sampling Rate FIR Filters &lt;./Design_Tutorials/02-super_sampling_rate_fir/README&gt;" type="topics"/>
+			<ft:node href="Beamforming Design &lt;./Design_Tutorials/03-beamforming/README.html" ft:title="Beamforming Design &lt;./Design_Tutorials/03-beamforming/README&gt;" type="topics"/>
+			<ft:node href="AIE Emulation on Custom Platforms &lt;./Design_Tutorials/04-custom-platform-emulation/README.html" ft:title="AIE Emulation on Custom Platforms &lt;./Design_Tutorials/04-custom-platform-emulation/README&gt;" type="topics"/>
+			<ft:node href="2D-FFT &lt;./Design_Tutorials/06-fft2d_AIEvsHLS/README.html" ft:title="2D-FFT &lt;./Design_Tutorials/06-fft2d_AIEvsHLS/README&gt;" type="topics"/>
+			<ft:node href="FIR Filter &lt;./Design_Tutorials/07-firFilter_AIEvsHLS/README.html" ft:title="FIR Filter &lt;./Design_Tutorials/07-firFilter_AIEvsHLS/README&gt;" type="topics"/>
+			<ft:node href="N-Body Simulator &lt;./Design_Tutorials/08-n-body-simulator/README.html" ft:title="N-Body Simulator &lt;./Design_Tutorials/08-n-body-simulator/README&gt;" type="topics"/>
+			<ft:node href="A to Z Bare-metal Flow &lt;./Feature_Tutorials/01-aie_a_to_z/README.html" ft:title="A to Z Bare-metal Flow &lt;./Feature_Tutorials/01-aie_a_to_z/README&gt;" type="topics"/>
+			<ft:node href="Using GMIO with AIE &lt;./Feature_Tutorials/02-using-gmio/README.html" ft:title="Using GMIO with AIE &lt;./Feature_Tutorials/02-using-gmio/README&gt;" type="topics"/>
+			<ft:node href="Runtime Parameter Reconfiguration &lt;./Feature_Tutorials/03-rtp-reconfiguration/README.html" ft:title="Runtime Parameter Reconfiguration &lt;./Feature_Tutorials/03-rtp-reconfiguration/README&gt;" type="topics"/>
+			<ft:node href="Packet Switching &lt;./Feature_Tutorials/04-packet-switching/README.html" ft:title="Packet Switching &lt;./Feature_Tutorials/04-packet-switching/README&gt;" type="topics"/>
+			<ft:node href="Versal Integration for Hardware Emulation and Hardware &lt;./Feature_Tutorials/05-AI-engine-versal-integration/README.html" ft:title="Versal Integration for Hardware Emulation and Hardware &lt;./Feature_Tutorials/05-AI-engine-versal-integration/README&gt;" type="topics"/>
+			<ft:node href="Versal System Design Clocking &lt;./Feature_Tutorials/06-versal-system-design-clocking-tutorial/README.html" ft:title="Versal System Design Clocking &lt;./Feature_Tutorials/06-versal-system-design-clocking-tutorial/README&gt;" type="topics"/>
+			<ft:node href="Using Floating-Point in the AI Engine &lt;./Feature_Tutorials/07-AI-Engine-Floating-Point/README.html" ft:title="Using Floating-Point in the AI Engine &lt;./Feature_Tutorials/07-AI-Engine-Floating-Point/README&gt;" type="topics"/>
+			<ft:node href="DSP Library Tutorial &lt;./Feature_Tutorials/08-dsp-library/README.html" ft:title="DSP Library Tutorial &lt;./Feature_Tutorials/08-dsp-library/README&gt;" type="topics"/>
+			<ft:node href="Debug Walkthrough &lt;./Feature_Tutorials/09-debug-walkthrough/README.html" ft:title="Debug Walkthrough &lt;./Feature_Tutorials/09-debug-walkthrough/README&gt;" type="topics"/>
+			<ft:node href="AI Engine DSP Library and Model Composer Tutorial &lt;./Feature_Tutorials/10-aie-dsp-lib-model-composer/README.html" ft:title="AI Engine DSP Library and Model Composer Tutorial &lt;./Feature_Tutorials/10-aie-dsp-lib-model-composer/README&gt;" type="topics"/>
+			<ft:node href="Versal Emulation Waveform Analysis &lt;./Feature_Tutorials/11-ai-engine-emulation-waveform-analysis/README.html" ft:title="Versal Emulation Waveform Analysis &lt;./Feature_Tutorials/11-ai-engine-emulation-waveform-analysis/README&gt;" type="topics"/>
+			<ft:node href="AXIS External Traffic Generator &lt;./Feature_Tutorials/12-axis-traffic-generator/README.html" ft:title="AXIS External Traffic Generator &lt;./Feature_Tutorials/12-axis-traffic-generator/README&gt;" type="topics"/>
+			<ft:node href="AI Engine Performance and Deadlock Analysis Tutorial &lt;./Feature_Tutorials/13-aie-performance-analysis/README.html" ft:title="AI Engine Performance and Deadlock Analysis Tutorial &lt;./Feature_Tutorials/13-aie-performance-analysis/README&gt;" type="topics"/>
+			<ft:node href="Implementing an IIR Filter on the AI Engine &lt;./Feature_Tutorials/14-implementing-iir-filter/README.html" ft:title="Implementing an IIR Filter on the AI Engine &lt;./Feature_Tutorials/14-implementing-iir-filter/README&gt;" type="topics"/>
+		</ft:node>
 	</ft:toc>
 	<ft:metas>
 		<ft:meta key="Group">test</ft:meta>
