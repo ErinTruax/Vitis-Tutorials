@@ -14,12 +14,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  
-    - name: execute py script to generate ftmap file
-   # run the run.py to get the latest data
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: execute py script
+     # run the run.py to get the latest data
       run: |
-              cd 2021-2
-              cd source
-              cp ftmap.py .
-              echo "Hello World"
-              python ftmap.py
+            cd 2021-2
+            cd source
+            cp ../../ftmap.py .
+            echo "Hello World"
+            python ftmap.py
+
