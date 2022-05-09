@@ -85,7 +85,7 @@ Feature Tutorials
    :caption: Feature Tutorials
    :hidden:
 
-   A to Z Bare-metal  Flow Feature_Tutorials/01-aie_a_to_z/README.md
+   A to Z Bare-metal Flow  Feature_Tutorials/01-aie_a_to_z/README.md
    Using GMIO with AIE  Feature_Tutorials/02-using-gmio/README.md
    Runtime Parameter Reconfiguration  Feature_Tutorials/03-rtp-reconfiguration/README.md
    Packet Switching  Feature_Tutorials/04-packet-switching/README.md
