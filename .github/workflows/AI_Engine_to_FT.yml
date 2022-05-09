@@ -43,6 +43,8 @@ jobs:
       id: commit
       run: |
         git add --all
+        git config --global user.email "tiantian@xilinx.com"
+        git config --global user.name "tzx0004"
         if [-z "$(git status --porcelain)"]; then
            echo "::set-output name=push::false"
         else
