@@ -44,6 +44,9 @@ jobs:
       run: |
         git config --local user.email "$(git log --format='%ae' HEAD^!)"
         git config --local user.name "$(git log --format='%an' HEAD^!)"
+        git remote add github "https://tzx0004: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@github.com/Vitis-Tutorials.git"
+        git pull github gh-pages --ff-only
+
         git add --all
         git commit -am "New FTMAP"
         git push origin HEAD:gh-pages
