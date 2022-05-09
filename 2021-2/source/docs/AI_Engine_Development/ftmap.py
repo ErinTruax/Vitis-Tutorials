@@ -121,8 +121,8 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
                 continue
             if ".md" not in sub_file:
                 sub_file = sub_file + ".md" 
-            title = sub_file.split(" ")[0]
-            sub_file = sub_file.split(" ")[1]
+            title = sub_file.split("  ")[0]
+            sub_file = sub_file.split("  ")[1]
             if sub_file.startswith("./"):
                 sub_file = sub_file[2:]
             if sub_file.startswith("/"):
