@@ -32,15 +32,14 @@ jobs:
     - name: execute py script
      # run the run.py to get the latest data
       run: |
+            mkdir deploy
             cd 2021-2
             cd source
             pwd
             cp ../../ftmap.py .
             echo "Hello World"
             python ftmap.py
-            cd ../../
-            mkdir deploy
-            cp ../../index.ftmap deploy
+            cp index.ftmap ../../deploy
             
     # Deploy
     - name: Push
