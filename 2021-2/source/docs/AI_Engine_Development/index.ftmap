@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <ft:map ft:editorialType="book" ft:lang="en-US" ft:originID="TechDocs" ft:title="TechDocs" xmlns:ft="http://ref.fluidtopics.com/v3/ft#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ft:toc>
-		<ft:node href="AI_Engine_Development.html" ft:title="TechDocs" type="topic">
+		<ft:node href="AI_Engine_Development.html" ft:title="AI Engine Development" type="topic">
 			<ft:node href="Design_Tutorials/01-aie_lenet_tutorial/README.html" ft:title="LeNet Tutorial" type="topics"/>
 			<ft:node href="Design_Tutorials/02-super_sampling_rate_fir/README.html" ft:title="Super Sampling Rate FIR Filters" type="topics"/>
 			<ft:node href="Design_Tutorials/03-beamforming/README.html" ft:title="Beamforming Design" type="topics"/>
