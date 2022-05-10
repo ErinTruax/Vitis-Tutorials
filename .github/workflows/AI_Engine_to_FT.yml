@@ -41,6 +41,7 @@ jobs:
             cd ../../../build/html/docs/AI_Engine_Development/
             python handle_html.py
             pwd
+            zip -r AI.zip . 
             echo "Hello World!!"
 
     - name: setup git config
