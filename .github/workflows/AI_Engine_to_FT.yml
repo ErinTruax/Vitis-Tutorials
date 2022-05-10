@@ -41,9 +41,7 @@ jobs:
             cd ../../../build/html/docs/AI_Engine_Development/
             python handle_html.py
             pwd
-            echo "Hello World"
-            python upload_to_ft.py
-
+            echo "Hello World!!"
 
     - name: setup git config
       run: |
