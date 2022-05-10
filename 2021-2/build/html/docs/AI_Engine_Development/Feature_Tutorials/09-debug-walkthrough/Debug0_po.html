@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -269,7 +269,6 @@ After the previously listed steps are completed, you should have AI Engine, PS, 
 <img src="images/po_import.png" width="450"/>
 <img src="images/po_import1.png" width="450"/><p>Continue to import data for aiengine sub-project, source code for PS, PL, and hardware link sub-projects.</p>
 <p><strong>Note:</strong> If the PS sub-project requires <code class="docutils literal notranslate"><span class="pre">defer-aie-run</span></code> option in packaging, <code class="docutils literal notranslate"><span class="pre">aie_control_xrt.cpp</span></code> is required to be imported in the PS sub-project.</p>
-
 <h2>Step 3.1 Configure AI Engine sub-project</h2>
 <p>Configure top level graph.
 <img src="images/po_graph.png"/></p>
@@ -292,7 +291,7 @@ After the previously listed steps are completed, you should have AI Engine, PS, 
 <img src="images/po_ps_c_config.png" width="450"/><p>Configure PS application include paths.</p>
 <img src="images/po_ps_c_config2.png" width="600"/><p>Configure PS application link libraries.</p>
 <img src="images/po_ps_c_config3.png" width="600"/>
-<h1>Step 4 Configure system project in packaging options</h1>
+
 <img src="images/po_system_config.png"/><p><strong>Note:</strong> This configuration is optional and depends on the design.</p>
 <ol class="simple">
 <li><p>If initialize is required, run, and end from PS, then use the <code class="docutils literal notranslate"><span class="pre">--package.defer_aie_run</span></code> option.</p></li>

@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -973,7 +973,6 @@ Some additional details regarding the data mover kernels include:</p>
 <li><p>The data width is 128 bits</p></li>
 <li><p>To avoid bandwidth limitation resulting in back pressure which causes performance degradation, the HLS pragma <code class="docutils literal notranslate"><span class="pre">max_write_burst_length</span></code> is set higher than the default to 256 bits.</p></li>
 </ul>
-
 <p>The software design in the FIR Filter AI Engine implementation consists of the following sections:</p>
 <details>
 <summary>AI Engine Kernels and Graph Representation</summary>
@@ -1179,7 +1178,7 @@ Note: This call will only return once it receives the number of samples specifie
 <h4>7. Release Allocated Resources</h4>
 <p>Close the mm2s/s2mm kernels and FIR chain graph.</p>
 </div>
-<h1>References</h1>
+
 <p>The following documents provide supplemental information for this tutorial.</p>
 <h2><a class="reference external" href="https://docs.xilinx.com/search/all?filters=Document_ID~%2522UG1076%2522_%2522UG1079%2522&amp;content-lang=en-US">AI Engine Documentation</a></h2>
 <p>Contains sections on how to develop AI Engine graphs, how to use the AI Engine compiler, and AI Engine simulation, and performance analysis.</p>

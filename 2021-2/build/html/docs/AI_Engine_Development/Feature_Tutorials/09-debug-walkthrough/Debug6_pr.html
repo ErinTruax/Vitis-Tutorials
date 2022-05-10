@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -283,7 +283,6 @@ static void stop_profiling<span class="o">(</span>handle h<span class="o">)</spa
 <p><a class="reference external" href="#2-Profile-APIs-with-HW-Emulator">2. Profiling APIs with HW Emulator</a></p>
 <p><a class="reference external" href="#3-Profile-APIs-on-HW">3. Profiling APIs on HW</a></p>
 <p><a class="reference external" href="#4-Cross-Check-I/O-Performance-values-with-VCD">4. Cross Check I/O Performance values with VCD</a></p>
-
 <h2>Step 1.1 Download the Project</h2>
 <p>Clone the project source from git repository and unzip the zip file.</p>
 <h2>Step 1.2 Prepare Profiling APIs applied graph code</h2>
@@ -303,7 +302,7 @@ make libadf.a
 <img src="images/pr_aie_perf.png" width="600"/><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vitis_analyzer ./aiesimulator_output/default.aierun_summary
 </pre></div>
 </div>
-<h1>2. Profiling APIs with HW Emulator</h1>
+
 <h2>Step 2.1 Prepare profiling APIs applied host code and Makefile</h2>
 <p>After step 1.1 completed.
 Use this tutorial’s host.cpp.profile_api that contains AIE profiling APIs and Makefile for HW Emulation.</p>

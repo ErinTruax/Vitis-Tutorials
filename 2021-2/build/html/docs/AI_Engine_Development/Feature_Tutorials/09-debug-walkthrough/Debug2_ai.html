@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -307,7 +307,6 @@ Vitis™ IDE console displays <code class="docutils literal notranslate"><span c
 <img src="images/aie_sim_va_launch.png"/></p>
 <img src="images/aie_sim_va.png"/>
 <img src="images/aie_sim_profile.png"/><p><strong>Note:</strong> Click on <strong>Trace</strong> for generated event trace info. Click on <strong>Profile</strong> for selected AI Engine tiles’ profile report files. These events are timing approximately accurate and can be a good reference for how the design runs.</p>
-
 <p>The simplest form of tracing is to use a formatted <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statement in the code for printing debug messages. Visual inspection of intermediate values and addresses can help you understand the progress of program execution. No additional include files are necessary for using <code class="docutils literal notranslate"><span class="pre">printf()</span></code> other than standard C/C++ includes (<code class="docutils literal notranslate"><span class="pre">stdio.h</span></code>). You can add <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statements to your code to be processed during simulation, or hardware emulation, and remove them or comment them out for hardware builds.</p>
 <h2>Step 1. Add <code class="docutils literal notranslate"><span class="pre">printf</span></code> statement in source code</h2>
 <p>Select <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> file in Vitis IDE to be edited. Add <code class="docutils literal notranslate"><span class="pre">printf("prbcnt=%d\n",</span> <span class="pre">prbcnt);</span></code> statement at line 42 of <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> file.</p>
@@ -324,7 +323,7 @@ Vitis™ IDE console displays <code class="docutils literal notranslate"><span c
 <img src="images/aie_sim_printf.png"/></p>
 <h2><code class="docutils literal notranslate"><span class="pre">printf</span></code> Limitations</h2>
 <p>Adding <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statements increases program memory size. Make sure not to exceed program memory size when using <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statements to debug.</p>
-<h1>4. AI Engine Emulator <code class="docutils literal notranslate"><span class="pre">--enable-memory-check</span></code> Option</h1>
+
 <p>This option helps to find out of range memory access from each tile during AI Engine emulation run time, however, this option impacts run time performance negatively.
 The ‘out of range’ memory access indicates valid address assignment within each section. There could be certain addresses that are not assigned between sections. Hence this option is useful to debug the design.</p>
 <h2>Step 1. Identify an Invalid Address from Design</h2>

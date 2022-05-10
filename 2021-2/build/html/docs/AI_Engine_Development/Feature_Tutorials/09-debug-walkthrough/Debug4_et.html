@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -358,7 +358,6 @@ Transfer <code class="docutils literal notranslate"><span class="pre">aie_trace_
 <p>Zoom in to see detailed information for each state of AI Engine tiles.
 <img src="images/et_va_run.png"/></p>
 <p>Now you know that all the steps of event trace running on hardware board.</p>
-
 <h2>Event Trace Choice Considerations</h2>
 <p>Based on the design, select GMIO if the design has limited PL resources left for event trace generation. Otherwise, select PLIO for event trace generation.</p>
 <table border="1" class="docutils">
@@ -441,7 +440,7 @@ Transfer <code class="docutils literal notranslate"><span class="pre">aie_trace_
 </tr>
 </tbody>
 </table>
-<h1>Event Trace Limitations</h1>
+
 <ol class="simple">
 <li><p>Due to limited resources, overruns can be seen from event trace. Follow <a class="reference external" href="#Number-of-event-trace-streams-methodology">Number of event trace streams methodology</a> to configure number of trace streams minimize overruns issue.</p></li>
 <li><p>It is required that the <code class="docutils literal notranslate"><span class="pre">--broadcast-enable-core</span></code> option is used to compile the design. This is to eliminate time sync issues where start time of each tile is off by ~100 ns or more.</p></li>

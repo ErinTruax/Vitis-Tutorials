@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -942,7 +942,6 @@ and do:
 <li><p>It internally comprises four loops (<code class="docutils literal notranslate"><span class="pre">mm2s0</span></code>, <code class="docutils literal notranslate"><span class="pre">s2mm0</span></code>, <code class="docutils literal notranslate"><span class="pre">mm2s1</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2mm1</span></code>), with <code class="docutils literal notranslate"><span class="pre">s2mm0</span></code> - <code class="docutils literal notranslate"><span class="pre">mm2s1</span></code> sequenced one after the other and wrapped into the <code class="docutils literal notranslate"><span class="pre">dmaHls_rowsToCols</span></code> function. <code class="docutils literal notranslate"><span class="pre">mm2s0</span></code>, <code class="docutils literal notranslate"><span class="pre">dmaHls_rowsToCols</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2mm1</span></code> are concurrently scheduled.</p></li>
 <li><p>The data width is 128 bits at both the AXI4-stream I/O sides, running at 250 MHz.</p></li>
 </ul>
-
 <p>The software design in the AI Engine 2D-FFT tutorial consists of the following sections:</p>
 <details>
 <summary>Methodology</summary>
@@ -1364,7 +1363,7 @@ and do:
 <li><p>Release allocated resources. After post-processing the data, release the allocated objects and handles using the <code class="docutils literal notranslate"><span class="pre">xrtRunClose</span></code>, <code class="docutils literal notranslate"><span class="pre">xrtKernelClose</span></code>, <code class="docutils literal notranslate"><span class="pre">xrtGraphClose</span></code>, and <code class="docutils literal notranslate"><span class="pre">xrtDeviceClose</span></code> functions.</p></li>
 </ol>
 </div>
-<h1>Performance Details</h1>
+
 <p>For all applications, designers must work to predefined specifications and build a system for their specific deployment by meeting their system requirements with respect to their available resources, latency, throughput, performance, and power. In this section, it is outlined how to measure those characteristics for the AI Engine implementation in this tutorial.</p>
 <details>
 <summary>Resource Utilization and Power</summary>

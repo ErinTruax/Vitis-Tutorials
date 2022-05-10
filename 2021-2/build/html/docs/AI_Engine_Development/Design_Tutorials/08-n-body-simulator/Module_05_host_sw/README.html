@@ -12,8 +12,8 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
-<meta name="keywords">
-<meta content="" property="og:title"/>
+<meta name="keywords"/>
+<meta content="" property="og:title">
 <meta property="og:description"/>
 <!-- favicon -->
 <link href="../../../../../_static/favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
@@ -305,7 +305,6 @@ function OptanonWrapper() { }
 <li><p>LERROR</p></li>
 <li><p>LNONE</p></li>
 </ul>
-
 <p>The <code class="docutils literal notranslate"><span class="pre">host/main_xrt.cpp</span></code> host application is compiled into the <code class="docutils literal notranslate"><span class="pre">build/ps_app.exe</span></code> executable. This host application reads in the <code class="docutils literal notranslate"><span class="pre">m2s_i.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">input_j.txt</span></code> files that initalize the <code class="docutils literal notranslate"><span class="pre">m2s_x2</span></code> PL kernel’s <code class="docutils literal notranslate"><span class="pre">ibuff</span></code> and <code class="docutils literal notranslate"><span class="pre">jbuff</span></code> DDR buffer inputs.  This host application starts the PL kernels and the AI Engine graph and waits for one iteration of data to flow through the design. Once the <code class="docutils literal notranslate"><span class="pre">s2m_x4</span></code> PL kernel completes, this host application compares the AI Engine output to the golden output files (<code class="docutils literal notranslate"><span class="pre">s2m_x4_k0.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">s2m_x4_k1.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">s2m_x4_k2.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2m_x4_k3.txt</span></code> files). If there are any data mismatches, then the <code class="docutils literal notranslate"><span class="pre">TEST</span> <span class="pre">FAILED</span></code>, else the <code class="docutils literal notranslate"><span class="pre">TEST</span> <span class="pre">PASSED</span></code>. If you provide the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> command line input, this host application also calculates the execution times for the C++ N-Body Simulator and the AI Engine N-Body Simulator for comparison.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">host/main_animate.cpp</span></code> host application is compiled into the <code class="docutils literal notranslate"><span class="pre">build/ps_animate.exe</span></code> executable. This host application does the following:</p>
 <ul class="simple">
@@ -319,7 +318,7 @@ function OptanonWrapper() { }
 <p>The host application repeats these actions for 300 timesteps. You can provide the <code class="docutils literal notranslate"><span class="pre">--timesteps</span> <span class="pre">&lt;num_timesteps&gt;</span></code> command line input to specify how many timesteps (iterations) the design runs for.</p>
 <p>The following is the general execution flow for the host applications.</p>
 <p><img alt="alt text" src="../../../../../_images/host_app_flow_chart_2.PNG"/></p>
-<h1>References</h1>
+
 <ul class="simple">
 <li><p><a class="reference external" href="https://xilinx.github.io/XRT/master/html/index.html">XRT Documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/Xilinx/XRT">XRT Github Repo</a></p></li>
