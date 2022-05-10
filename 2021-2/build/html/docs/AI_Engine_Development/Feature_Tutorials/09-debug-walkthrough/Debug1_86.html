@@ -9,8 +9,8 @@
 <meta charset="utf-8"/>
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta name="description"/>
 <meta name="keywords"/>
 <meta content="" property="og:title"/>
@@ -261,7 +261,6 @@ function OptanonWrapper() { }
 <p><a class="reference external" href="#6-x86simulator-Features">6. x86simulator Features</a></p>
 <p><a class="reference external" href="#7-Command-Line-Projects-Support">7. Command Line Projects Support</a></p>
 <p><a class="reference external" href="#Limitations">Limitations</a></p>
-
 <h2>Step 1.1 Select Software Emulation Configuration</h2>
 <img src="images/se_config.png" width="300"/>
 <h2>Step 1.2 Build Configuration</h2>
@@ -277,7 +276,7 @@ function OptanonWrapper() { }
 <p>X86 emulator output files from design are located at <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/x86simulator_output/data</span></code>. Verify the output files <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/x86simulator_output/data/dlbf_out[0-7].txt</span></code> and <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/x86simulator_output/data/ulbf_out[0-3].txt</span></code> against golden files <code class="docutils literal notranslate"><span class="pre">${PROJECT}/data/dlbf_gold[0-7].txt</span></code> and <code class="docutils literal notranslate"><span class="pre">${PROJECT}/data/ulbf_gold[0-3].txt</span></code> to ensure that the design’s I/O functionalities are correct. Vitis IDE supports <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">with</span></code> feature to compare two files, highlight two files to be compared then right click one of highlighted file and select <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">with</span></code> then <code class="docutils literal notranslate"><span class="pre">each</span> <span class="pre">other</span></code>.
 For example, Compare <code class="docutils literal notranslate"><span class="pre">${PROJECT}/data/ulbf_gold3.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/data/ulbf_out3.txt</span></code></p>
 <img src="images/se_compare.png" width="600"/>
-<h1>2. <code class="docutils literal notranslate"><span class="pre">printf</span></code> Support</h1>
+
 <p>The simplest form of tracing is to use a formatted <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statement in the code for printing debug messages. Visual inspection of intermediate values and addresses can help you understand the progress of program execution. You can add <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statements to your code to be processed during x86 emulation, or AIE emulation, and remove them or comment them out for hardware builds. To help identify which kernel is printing which line the <code class="docutils literal notranslate"><span class="pre">X86SIM_KERNEL_NAME</span></code> macro can be useful.</p>
 <h2>Step 2.1 Add <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statement</h2>
 <p>Select <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> file in Vitis IDE to be edited. Add <code class="docutils literal notranslate"><span class="pre">&lt;adf/x86sim/x86simDebug.h&gt;</span></code> at line 24 and <code class="docutils literal notranslate"><span class="pre">printf("%s:</span> <span class="pre">%s,</span> <span class="pre">%d\n",</span> <span class="pre">__FUNCTION__,</span> <span class="pre">X86SIM_KERNEL_NAME,</span> <span class="pre">__LINE__);</span></code> statement at line 37 of <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> file.

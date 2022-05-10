@@ -9,8 +9,8 @@
 <meta charset="utf-8"/>
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta name="description"/>
 <meta name="keywords"/>
 <meta content="" property="og:title"/>
@@ -288,7 +288,6 @@ function OptanonWrapper() { }
 </pre></div>
 </div>
 <p>The same linking options were used to generate the <code class="docutils literal notranslate"><span class="pre">build/ps_app_animate.exe</span></code> executable.</p>
-
 <p>After the full hardware design is implemented, the next step is to focus on the host software that enables the entire design. In the Vitis™ core development kit, host code is written in C++ language using the Xilinx® runtime (XRT) API. The XRT native API is described on the <a class="reference external" href="https://xilinx.github.io/XRT/2021.1/html/xrt_native_apis.html">XRT site</a>.</p>
 <p>This module compiles the following host applications and custom APIs:</p>
 <ul class="simple">
@@ -297,7 +296,7 @@ function OptanonWrapper() { }
 <li><p><code class="docutils literal notranslate"><span class="pre">host/main_xrt.cpp</span></code> - Host application that compares AI Engine output to golden data (functional check)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">host/main_animate.cpp</span></code> - Host application that runs the design for multiple iterations and saves position data to a file to post-process and create an <code class="docutils literal notranslate"><span class="pre">animation.gif</span></code> later.</p></li>
 </ul>
-<h1>NBodySimulator API</h1>
+
 <p>The NBodySimulator API is a C++ implementation of an N-Body Simulator which runs on the native A72 processor. It also writes the position data to an <code class="docutils literal notranslate"><span class="pre">animation_data.txt</span></code> file which you will post-process later to create an <code class="docutils literal notranslate"><span class="pre">animation.gif</span></code>.</p>
 <h1>Logger API</h1>
 <p>The Logger API is used to save logging messages from the host applications to the <code class="docutils literal notranslate"><span class="pre">run.log</span></code> file. The host application can set the log level of which messages are written to the <code class="docutils literal notranslate"><span class="pre">run.log</span></code> and which messages are shown on the console during execution. By default, the log level is set to <code class="docutils literal notranslate"><span class="pre">LMESSAGE</span></code>, meaning all messages will be written to <code class="docutils literal notranslate"><span class="pre">run.log</span></code>. The cout log level is set to <code class="docutils literal notranslate"><span class="pre">LINFO</span></code>, meaning any messages set to <code class="docutils literal notranslate"><span class="pre">LINFO</span></code> will be also displayed on the output console during execution.</p>
