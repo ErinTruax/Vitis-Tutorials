@@ -6,7 +6,7 @@ import zipfile
 #server_url = "https://xilinx-staging.fluidtopics.net/api/admin/khub/sources/ftml/upload"
 server_url = 'https://docs.xilinx.com/api/admin/khub/sources/ftml/upload'
 HEADERS = {'FT-Authorization': 'Bearer NRcvr7KGYsuYmd6KELscCnMQlA6oLmog' }
-
+print("In uploading to FT")
 zf = zipfile.ZipFile('techdocs.zip', "w")
 for dirname, subdirs, files in os.walk("."):
     print("dirname " + dirname)
