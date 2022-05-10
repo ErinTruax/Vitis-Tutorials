@@ -10,8 +10,8 @@
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta name="description"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description">
 <meta name="keywords"/>
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
@@ -268,12 +268,11 @@ It takes over 60 minutes to complete the build.</p>
 <img src="images/he_run_ps.png"/>
 <h3>Step 3.2 Debug - AI Engine</h3>
 <img src="images/he_run_aie.png"/><p>AI Engine only debugs within system project via hardware emulator, AI Engine emulator debug still applies. <a href="Debug2_ai.md">AI Engine debug with AIE emulator</a> are applicable at this condition.</p>
-
 <ol class="simple">
 <li><p>Limitations from <a href="Debug2_ai.md">AI Engine debug with AIE emulator</a> applies.</p></li>
 <li><p>PL debug is not supported from Vitis™ IDE.</p></li>
 </ol>
-<h1>Command-Line Project Source Code Debug with Hardware Emulator</h1>
+
 <p>Use cases that involve using Vitis IDE functionalities without migrating to Vitis IDE are permitted.</p>
 <h2>Step 1 Build Project to be Debugged</h2>
 <p>If the project is not built already, use this tutorial’s <code class="docutils literal notranslate"><span class="pre">Makefile.emu</span></code> that has <code class="docutils literal notranslate"><span class="pre">--package.enable_aie_debug</span></code> option in the packaging step. This option inserts configuration data object (CDO) that generates stop requests for the AI Engine cores, so that they stop at the reset vector. This option is required to add debug capabilities. Issue command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">package_dbg</span></code> with this tutorial’s <code class="docutils literal notranslate"><span class="pre">Makefile.emu</span></code> to package binaries that can be debugged.
