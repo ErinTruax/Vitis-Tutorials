@@ -1,16 +1,18 @@
 import sys,os
-import requests
-import zipfile
 dirname = os.path.dirname(__file__)
 print(dirname)
 from bs4 import BeautifulSoup
 
 def handle_html(filename):
-    print(filename)
     file = open(filename, 'r+', encoding="utf-8")
     soup = BeautifulSoup(file, 'html.parser')
+    soup = soup.find('div', {"class": "rst-content"})
     sections = soup.findAll('div', {"class": "section"})
     documents = soup.findAll('div', {"class": "document"})
+    navigation_bar = soup.find('div', {"role": "navigation"})
+    if navigation_bar:
+        navigation_bar.decompose()
+    print(len(documents))
     articleBodys = soup.findAll('div', {"itemprop": "articleBody"})
 
     headerlinks = soup.findAll('a', {'class': 'headerlink'})
@@ -46,22 +48,4 @@ for root, dirnames, filenames in os.walk(directory):
         if filename.endswith('.html'):
             fname = os.path.join(root, filename)
             handle_html(fname)
-
-print("HERE")
-
-
-
-server_url = 'https://docs.xilinx.com/api/admin/khub/sources/ftml/upload'
-headers = {'FT-Authorization': 'Bearer NRcvr7KGYsuYmd6KELscCnMQlA6oLmog' }
-print("In uploading to FT")
-
-  
-#fileobj = open ('techdocs.zip', 'rb')
-#r = requests.post(server_url, headers=HEADERS, files={"archive": ('techdocs.zip', fileobj)})
-#r = requests.get(server_url +"/api/khub/maps" , headers=HEADERS)
-
-#if r.ok:
-#    print("OK")
-#else:
-#    print(r.status_code)
             
