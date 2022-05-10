@@ -28,7 +28,7 @@ jobs:
     - name: install sphinx and dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip3 install docutils==0.16 bs4
+        pip3 install docutils==0.16 bs4 requests
     - name: execute py script
      # run the run.py to get the latest data
       run: |
