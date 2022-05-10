@@ -164,7 +164,7 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
                 print("ROOT_DIR  " + ROOT_DIR)
                 print(str(abspath).replace(str(ROOT_DIR), ''))
                 check_if_string_in_file(y, title, node, str(abspath).replace(str(ROOT_DIR), ''))
-
+    print("DONE")
     return False
 
         
