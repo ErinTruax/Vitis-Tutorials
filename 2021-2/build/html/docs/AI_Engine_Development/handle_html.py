@@ -4,11 +4,11 @@ print(dirname)
 from bs4 import BeautifulSoup
 
 def handle_html(filename):
+    print(filename)
     file = open(filename, 'r+', encoding="utf-8")
     soup = BeautifulSoup(file, 'html.parser')
     sections = soup.findAll('div', {"class": "section"})
     documents = soup.findAll('div', {"class": "document"})
-    print(len(documents))
     articleBodys = soup.findAll('div', {"itemprop": "articleBody"})
 
     headerlinks = soup.findAll('a', {'class': 'headerlink'})
@@ -44,4 +44,6 @@ for root, dirnames, filenames in os.walk(directory):
         if filename.endswith('.html'):
             fname = os.path.join(root, filename)
             handle_html(fname)
+
+print("HERE")
             
