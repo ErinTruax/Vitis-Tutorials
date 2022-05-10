@@ -6,7 +6,10 @@ from bs4 import BeautifulSoup
 def handle_html(filename):
     file = open(filename, 'r+', encoding="utf-8")
     soup = BeautifulSoup(file, 'html.parser')
+    print(type(soup))
     soup = soup.find('div', {"class": "rst-content"})
+    print(type(soup))
+
     sections = soup.findAll('div', {"class": "section"})
     documents = soup.findAll('div', {"class": "document"})
     navigation_bar = soup.find('div', {"role": "navigation"})
@@ -37,9 +40,11 @@ def handle_html(filename):
 
     file.seek(0)
     file.truncate()
+    soup2 = BeautifulSoup(str(soup), 'html.parser')
+    soup2.contents[0].unwrap()
 
 
-    file.write(str(soup))
+    file.write(str(soup2))
 
 
 directory = '.'
