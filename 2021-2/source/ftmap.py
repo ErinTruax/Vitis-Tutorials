@@ -163,6 +163,7 @@ def check_if_string_in_file(file_name, title, parentnode, prefix=""):
                 print(str(abspath).replace(str(ROOT_DIR), ''))
                 check_if_string_in_file(y, sub_file.replace(".md",""), node, str(abspath).replace(str(ROOT_DIR), ''))
 
+    print("Done to create ftmap")
     return False
 
         
