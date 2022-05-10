@@ -40,6 +40,7 @@ jobs:
             cp index.ftmap ../../../build/html/docs/AI_Engine_Development/
             cd ../../../build/html/docs/AI_Engine_Development/
             python handle_html.py
+            python upload_to_ft.py
 
 
     - name: setup git config
