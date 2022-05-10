@@ -9,9 +9,10 @@ HEADERS = {'FT-Authorization': 'Bearer NRcvr7KGYsuYmd6KELscCnMQlA6oLmog' }
 
 zf = zipfile.ZipFile('techdocs.zip', "w")
 for dirname, subdirs, files in os.walk("."):
+    print("dirname " + dirname)
     zf.write(dirname)
     for filename in files:
-        print(filename)
+        print("filename " +filename)
         zf.write(os.path.join(dirname, filename))
 zf.close()
   
