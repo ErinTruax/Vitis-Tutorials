@@ -54,14 +54,7 @@ print("HERE")
 server_url = 'https://docs.xilinx.com/api/admin/khub/sources/ftml/upload'
 headers = {'FT-Authorization': 'Bearer NRcvr7KGYsuYmd6KELscCnMQlA6oLmog' }
 print("In uploading to FT")
-zf = zipfile.ZipFile('AI_Engine.zip', "w")
-for dirname, subdirs, files in os.walk("."):
-    print("dirname " + dirname)
-    zf.write(dirname)
-    for filename in files:
-        print("filename " +filename)
-        zf.write(os.path.join(dirname, filename))
-zf.close()
+
   
 #fileobj = open ('techdocs.zip', 'rb')
 #r = requests.post(server_url, headers=HEADERS, files={"archive": ('techdocs.zip', fileobj)})
