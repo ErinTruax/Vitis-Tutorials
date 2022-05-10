@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -271,8 +271,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -281,9 +279,8 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Versal Integration for Hardware Emulation and Hardware</h1>
-<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 
+<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <h2>Introduction</h2>
 <p>Versal™ adaptive compute acceleration platforms (ACAPs) combine Scalar Engines, Adaptable Engines, and Intelligent Engines with leading-edge memory and interfacing technologies to deliver powerful heterogeneous acceleration for any application.</p>
 <p>This tutorial demonstrates creating a system design running on the AI Engine, PS, and Programmable logic. The AI Engine domain contains a simple graph consisting of 3 kernels. These kernels are connected by both windows and streams. The PL domain contains data movers that provide input and capture output from the AI Engine. The PS domain contains a host application that controls the entire system. You’ll validate the design running on these heterogeneous domains by first emulating the hardware and then running on actual hardware.</p>
@@ -296,8 +293,6 @@ function OptanonWrapper() { }
 <li><p>Set up your <code class="docutils literal notranslate"><span class="pre">PLATFORM_REPO_PATHS</span></code> environment variable based upon where you downloaded the platform.</p></li>
 </ol>
 <p>This tutorial targets the VCK190 ES board (see https://www.xilinx.com/products/boards-and-kits/vck190.html). This board is currently available via early access. If you have already purchased this board, download the necessary files from the lounge and ensure you have the correct licenses installed. If you do not have a board and ES license please contact your Xilinx sales contact.</p>
-
-
 <h2>Objectives</h2>
 <p>After completing this tutorial, you should be able to:</p>
 <ul class="simple">
@@ -308,8 +303,6 @@ function OptanonWrapper() { }
 <li><p>Create a software application that runs on Linux.</p></li>
 <li><p>Package the design to run on hardware emulation and an easy-to-boot SD card image to run on hardware.</p></li>
 </ul>
-
-
 <h2>Tutorial Overview</h2>
 <p><strong>Section 1</strong>: Compile AI Engine code using the AI Engine compiler, viewing compilation results in Vitis Analyzer.</p>
 <p><strong>Section 2</strong>: Simulate the AI Engine graph using the <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code> and viewing trace, and profile results in Vitis Analyzer</p>
@@ -356,11 +349,9 @@ function OptanonWrapper() { }
 </tr>
 </tbody>
 </table>
-
 <h2>Section 1: Compile AI Engine code using the AI Engine compiler, viewing compilation results in Vitis Analyzer.</h2>
 <p>The first step is to take any v++ kernels (HLS C), AI Engine Kernels and graph, then compile them into their respective <code class="docutils literal notranslate"><span class="pre">.xo</span></code> and <code class="docutils literal notranslate"><span class="pre">.o</span></code> files. You can compile the kernels and graph in parallel because they do not rely on each other at this step.</p>
 <p>This tutorial design has 3 AI Engine kernels (interpolator, polar_clip and classifier) and two HLS PL kernels (<code class="docutils literal notranslate"><span class="pre">s2mm</span></code> and <code class="docutils literal notranslate"><span class="pre">mm2s</span></code>).</p>
-
 <h3>Compiling HLS Kernels Using v++</h3>
 <p>To compile the <code class="docutils literal notranslate"><span class="pre">mm2s</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2mm</span></code> PL HLS kernels, use the <code class="docutils literal notranslate"><span class="pre">v++</span></code> compiler command - which takes in an HLS kernel source and produces an <code class="docutils literal notranslate"><span class="pre">.xo</span></code> file.</p>
 <ol>
@@ -410,7 +401,6 @@ v++ -c --platform <span class="nv">$PLATFORM_REPO_PATHS</span>/xilinx_vck190_es1
 </tr>
 </tbody>
 </table>
-
 <h3>Compiling an AI Engine ADF Graph for V++ Flow</h3>
 <p>An ADF Graph can be connected to an extensible Vitis platform. That is, the graph I/Os can be connected either to platform ports or to ports on Vitis kernels through the <code class="docutils literal notranslate"><span class="pre">v++</span></code> connectivity directives.</p>
 <ul class="simple">
@@ -457,8 +447,6 @@ v++ -c --platform <span class="nv">$PLATFORM_REPO_PATHS</span>/xilinx_vck190_es1
 </tr>
 </tbody>
 </table><p>The generated output from <code class="docutils literal notranslate"><span class="pre">aiecompiler</span></code> is the <code class="docutils literal notranslate"><span class="pre">Work</span></code> directory, and the <code class="docutils literal notranslate"><span class="pre">libadf.a</span></code> file. This file contains the compiled AI Engine configuration, graph, and Kernel <code class="docutils literal notranslate"><span class="pre">.elf</span></code> files.</p>
-
-
 <h3>Vitis Analyzer Compile Summary</h3>
 <p>Vitis Analyzer is used to view the AI Engine compilation results. It highlights the state of compilation, display the graph solution in both the <strong>Graph</strong> and <strong>Array</strong> views, provides guidance around the kernel code, and allow you to open various reports produced by <code class="docutils literal notranslate"><span class="pre">aiecompiler</span></code>. Below is the <code class="docutils literal notranslate"><span class="pre">graph.aiecompile_summary</span></code> file generated by the <code class="docutils literal notranslate"><span class="pre">aiecompiler</span></code>, which is located in the <code class="docutils literal notranslate"><span class="pre">Work</span></code> directory.</p>
 <p>The <strong>Summary View</strong> displays compilation runtime,  version of the compiler was used, the platform targeted, kernels created, and the exact command-line used for the compilation.</p>
@@ -485,8 +473,6 @@ v++ -c --platform <span class="nv">$PLATFORM_REPO_PATHS</span>/xilinx_vck190_es1
 </li>
 </ol>
 <p><strong>Note</strong>: The <strong>Graph View</strong> and <strong>Array View</strong> are presented in the next section.</p>
-
-
 <h3>Section 2: Simulating Graph and using Vitis Analyzer</h3>
 <p>After the graph has been compiled, you can simulate your design with the <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code> command. This uses a cycle approximate model to test your graph and get preliminary throughput information early in the design cycle, while the PL developers continue to work on the platform for the application.</p>
 <p><strong>Note</strong>: Simulating the design with VCD will increase simulation runtime. To learn more about this feature you can read this section here: <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021.2/vitis_doc/simulate_graph_application.html#pmy1512608736116">AI Engine SystemC Simulator</a>.</p>
@@ -517,7 +503,6 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 </ol>
 <p>As you can see a variety of files, the ones prefixed with <code class="docutils literal notranslate"><span class="pre">profile_</span></code> are the outputs of the profiling and calculated per tile. In this tutorial, the profiling is done for all tiles that are utilized, but you can limit to specific tiles by providing the row and column of the tile. To see more info about profiling with <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code> go <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021.2/vitis_doc/simulate_graph_application.html#yfx1512608800495">here</a>. You can open up these files to see what was calculated, but it is better to view it in Vitis Analyzer where it is all curated. The <code class="docutils literal notranslate"><span class="pre">data</span></code> directory is generated here with the output file(s) you have in the <code class="docutils literal notranslate"><span class="pre">graph.cpp</span></code> for the PLIO objects. Lastly, the <code class="docutils literal notranslate"><span class="pre">default.aierun_summary</span></code> is generated, which contains all the information generated by <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code> with profiling and trace info, and when opening this file in Vitis Analyzer will allow you to browse all the output files, and profile/trace data.</p>
 <p><strong>NOTE</strong>: The <code class="docutils literal notranslate"><span class="pre">tutorial.vcd</span></code> is generated on the same level as the <code class="docutils literal notranslate"><span class="pre">./Work</span></code> directory.</p>
-
 <h4>Vitis Analyzer</h4>
 <p>You can then open up the generated <code class="docutils literal notranslate"><span class="pre">default.aierun_summary</span></code> from the <code class="docutils literal notranslate"><span class="pre">aiesimulator_output</span></code> directory for Vitis Analyzer.</p>
 <ol>
@@ -528,15 +513,12 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 </li>
 </ol>
 <p>With this tool you can look at a variety of views to debug, and potentially, optimize your graph.</p>
-
 <h5><strong>Summary</strong></h5>
 <p>This a general overview summary of running <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code>. As you can see in the following screenshot, it tells you the status, what version is used, time, what platform is used, and the command-line used to execute.</p>
 <p><img alt="Vitis Analyzer Summary" src="../../../../_images/vitis_analyzer_summary.png"/></p>
 <ol class="simple">
 <li><p>Click on <strong>Profile</strong>.</p></li>
 </ol>
-
-
 <h5><strong>Profile</strong></h5>
 <p>The <strong>Profile View</strong> provides detailed information collected during the simulation to give you an idea on cycle count, total instructions executed, program memory, and specific info per functions in the two tiles that the kernels are programmed.</p>
 <p><img alt="Vitis Analyzer Profile" src="../../../../_images/vitis_analyzer_profile.png"/></p>
@@ -549,8 +531,6 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 <ol class="simple">
 <li><p>Click on <strong>Graph</strong>.</p></li>
 </ol>
-
-
 <h5><strong>Graph</strong></h5>
 <p>This view gives an overview of your graph and how the graph is designed in a logical fashion. In this view, you can see all the PLIO Ports, kernels, buffers, and net connections for the entire ADF Graph.</p>
 <p><strong>Note</strong>: This view as well as the <strong>Array View</strong> have cross-probe selection. Meaning selecting an object in this view will select it in the other and vice versa.</p>
@@ -558,8 +538,6 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 <ol class="simple">
 <li><p>Click on <strong>Array</strong>.</p></li>
 </ol>
-
-
 <h5><strong>Array</strong></h5>
 <p>The <strong>Array View</strong> gives you a logical device view of the AI Engine and how the kernels are placed and how they are connected to each other as well as the shim.</p>
 <p><img alt="Vitis Analyzer Array" src="../../../../_images/vitis_analyzer_array.png"/></p>
@@ -586,8 +564,6 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 <ol class="simple">
 <li><p>Click on <strong>Simulator Output</strong>.</p></li>
 </ol>
-
-
 <h5><strong>Simulator Output</strong></h5>
 <p>Lastly, the <strong>Simulator Output</strong> view and will print out the <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> generated by the graph. This is a timestamped output.</p>
 <p><strong>Note</strong>: If you need to compare this file to a golden one, you’ll have to remove the -<code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">####ns</span></code>- from the file.</p>
@@ -596,10 +572,6 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 <ol class="simple">
 <li><p>Once you’re done with the Vitis Analyzer, close it by going to <strong>File</strong> &gt; <strong>Exit</strong>.</p></li>
 </ol>
-
-
-
-
 <h3>Section 3: Use V++ to Link AI Engine, HLS Kernels with the Platform</h3>
 <p>After the AI Engine kernels, graph, PL kernel, and HLS kernels have been compiled, and simulated you can use <code class="docutils literal notranslate"><span class="pre">v++</span></code> to link them with the platform to generate an <code class="docutils literal notranslate"><span class="pre">.xclbin</span></code>.</p>
 <p><img alt="Section 2" src="../../../../_images/tutorial_step_2.png"/></p>
@@ -669,9 +641,6 @@ profile_funct_24_0.txt  profile_funct_25_0.txt  profile_instr_24_0.txt  profile_
 </tr>
 </tbody>
 </table><p>Now you have a generated <code class="docutils literal notranslate"><span class="pre">.xclbin</span></code> that will be used to execute your design on the platform.</p>
-
-
-
 <h2>Section 4: Compile the A72 Host Application</h2>
 <p>After all the new AI Engine outputs are created, you can compile your host application by following the typical cross-compilation flow for the Cortex-A72. As you might notice, the host code uses <a class="reference external" href="http://www.github.com/Xilinx/XRT">XRT</a> (Xilinx Run Time) as an API to talk to the AI Engine and PL kernels. Notice that in the linker, it is using the libraries: <code class="docutils literal notranslate"><span class="pre">-ladf_api_xrt</span> <span class="pre">-lxrt_coreutil</span></code>.</p>
 <ol>
@@ -783,7 +752,6 @@ v++ --package -t hw_emu <span class="se">\</span>
 </tr>
 </tbody>
 </table>
-
 <h3>Section 6: Run Hardware Emulation</h3>
 <p>After packaging, everything is set to run emulation. Since you ran <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code> with profiling enabled, you can bring that to hardware emulation. You can pass the <code class="docutils literal notranslate"><span class="pre">aiesim_options.txt</span></code> to the <code class="docutils literal notranslate"><span class="pre">launch_hw_emu.sh</span></code> which will enable the profiling options used in <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code> to be applied to hardware emulation. To do this, you will just add the <code class="docutils literal notranslate"><span class="pre">-aie-sim-options</span> <span class="pre">../aiesimulator_output/aiesim_options.txt</span></code>.</p>
 <ol>
@@ -842,8 +810,6 @@ dmesg -n <span class="m">4</span> <span class="o">&amp;&amp;</span> <span class=
 <ol class="simple">
 <li><p>Close out of the <strong>Vitis Analyzer</strong> and build for hardware.</p></li>
 </ol>
-
-
 <h3>Section 7: Build and Run on Hardware</h3>
 <ol>
 <li><p>To build for hardware run the following command:</p>
@@ -887,8 +853,6 @@ v++ --package -t hw <span class="se">\</span>
 </ol>
 <p>You should see <strong>TEST PASSED</strong>. You have successfully run your design on hardware.</p>
 <p><strong>IMPORTANT</strong>: To rerun the application you need to power cycle the board.</p>
-
-
 <h3>Summary</h3>
 <p>In this tutorial you learned the following:</p>
 <ul class="simple">
@@ -913,10 +877,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center"><sup>XD002 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -937,7 +897,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

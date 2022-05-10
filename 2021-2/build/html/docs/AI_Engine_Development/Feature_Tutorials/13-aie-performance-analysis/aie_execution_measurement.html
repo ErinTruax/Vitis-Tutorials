@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,9 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -252,12 +249,11 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>AI Engine Graph Execution and Measurement</h1>
+
 <p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <p>AI Engine graph execution uses locks for memory synchronization. The stream interfaces have inherent data synchronization through backward or forward pressure.</p>
 <p>This example introduces the Trace view to show how kernels with buffers and streams are executed and synchronized. Performance measurement methods are also introduced to help you identify the performance bottlenecks in the design. An optimized version of the design is then introduced.</p>
 <p><strong>Note:</strong> The default working directory in this step is <code class="docutils literal notranslate"><span class="pre">testcase_ssfifo</span></code>, unless explicitly stated otherwise.</p>
-
 <h2>Graph and Kernel Code</h2>
 <ol>
 <li><p>Run the following <code class="docutils literal notranslate"><span class="pre">make</span></code> command to compile the design:</p>
@@ -311,8 +307,6 @@ __attribute__ ((noinline)) void aie_dest2(input_stream&lt;int32&gt; *in, input_w
 </pre></div>
 </div>
 <p>It reads from the stream input and the window buffer, and writes to the stream output.</p>
-
-
 <h2>Graph Execution Model</h2>
 <ol>
 <li><p>Use the following command to run AI Engine simulator:</p>
@@ -345,8 +339,6 @@ __attribute__ ((noinline)) void aie_dest2(input_stream&lt;int32&gt; *in, input_w
 <p><strong>Note:</strong> The stream interface does not need to acquire lock; it has inherent backward and forward pressure for data synchronization. Every lock acquire and release event has some cycles of overhead.</p>
 </li>
 </ol>
-
-
 <h2>Graph Performance Measurement</h2>
 <p>There are multiple ways to measure performance:</p>
 <ol>
@@ -415,8 +407,6 @@ __attribute__ ((noinline)) void aie_dest2(input_stream&lt;int32&gt; *in, input_w
 </ul>
 </li>
 </ol>
-
-
 <h2>Design Optimization Considerations</h2>
 <p>In this section, the reference design is in <code class="docutils literal notranslate"><span class="pre">testcase_dmafifo_opt</span></code>. From performing the above analysis, it can be seen that the bottleneck of this design contains the following issues:</p>
 <ul>
@@ -489,13 +479,8 @@ Throughput of the graph: 3742.86 MB/s
 ```
 </pre></div>
 </div>
-
 <h3>Conclusion</h3>
 <p>This example has shown a number of different ways to do performance analysis and profiling. Some optimization skills have also been introduced. In the next section, take a look at how deadlocks might occur, and how to analyze them: see <a class="reference internal" href="aie_hang_analysis.html"><span class="doc">AI Engine Deadlock Analysis</span></a>.</p>
-
-
-
-
 <h1>Revision History</h1>
 <ul class="simple">
 <li><p>July 2021: Initial release.</p></li>
@@ -506,9 +491,6 @@ Throughput of the graph: 3742.86 MB/s
 </pre></div>
 </div>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -525,7 +507,6 @@ Throughput of the graph: 3742.86 MB/s
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

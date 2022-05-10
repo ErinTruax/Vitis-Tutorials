@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -332,8 +332,6 @@
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -342,7 +340,7 @@
 </td>
 </tr>
 </table>
-<h1>Asynchronous Update of Scalar RTP for PL inside a Graph, and Array RTP Update for AI Engine Kernel</h1>
+
 <p>This step demonstrates:</p>
 <ul class="simple">
 <li><p>How an asynchronous runtime scalar parameter can be passed to the PL kernel inside the graph</p></li>
@@ -351,7 +349,6 @@
 <p>The example is similar to <a class="reference internal" href="step3_async_array.html"><span class="doc">Asynchronous Update of Array RTP</span></a>, except that an asynchronous scalar runtime parameter is added for the PL kernel inside the graph. The system to be implemented is as follows.</p>
 <p><img alt="missing image" src="../../../../_images/figure8.PNG"/></p>
 <p><strong>Note</strong>: The default working directory for this step is “step4”, unless explicitly specified otherwise.</p>
-
 <h2>Review Graph and RTP Code</h2>
 <p>For the PL kernel (<code class="docutils literal notranslate"><span class="pre">random_noise</span></code>) inside the graph , an additional parameter <code class="docutils literal notranslate"><span class="pre">size</span></code> has been added, which is different from the free-running kernel in <a class="reference external" href="https://gitenterprise.xilinx.com/brucey/AIE_RTP_tutorials/blob/master/step3_async_array.html">previous step</a>. And a loop is added in the kernel to iterate <code class="docutils literal notranslate"><span class="pre">size</span></code> times. The code in <code class="docutils literal notranslate"><span class="pre">aie/hls/random_noise.cpp</span></code> is as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extern</span> <span class="s2">"C"</span> <span class="n">void</span> <span class="n">random_noise</span><span class="p">(</span><span class="n">hls</span><span class="p">::</span><span class="n">stream</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="nb">complex</span><span class="o">&lt;</span><span class="n">short</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="nb">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
@@ -392,8 +389,6 @@
 </pre></div>
 </div>
 <p><strong>Note</strong>: For PL kernels inside a graph, <code class="docutils literal notranslate"><span class="pre">update()</span></code> needs to be called before <code class="docutils literal notranslate"><span class="pre">run()</span></code>. In each graph, the <code class="docutils literal notranslate"><span class="pre">run()</span></code> PL kernel inside the graph will be started once, regardless of the number of iterations set for <code class="docutils literal notranslate"><span class="pre">run()</span></code>. But in each graph the <code class="docutils literal notranslate"><span class="pre">run()</span></code> AI Engine kernel will run the number of iterations set for <code class="docutils literal notranslate"><span class="pre">run()</span></code>. In each graph, <code class="docutils literal notranslate"><span class="pre">wait()</span></code> means both the AI Engine kernel and the PL kernel inside the graph wait to be completed. Thus, it is your responsibility to ensure the AI Engine and PL kernels inside the graph can start and complete in synchronous mode.</p>
-
-
 <h2>Run AI Engine Compiler and AI Engine Simulator</h2>
 <p>Compile the AI Engine graph (<code class="docutils literal notranslate"><span class="pre">libadf.a</span></code>) using the AI Engine compiler:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">aie</span>
@@ -408,8 +403,6 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">aiesim</span>
 </pre></div>
 </div>
-
-
 <h2>Run Hardware Cosimulation and Hardware Flow</h2>
 <p>The Makefile rule targets introduced in <a class="reference internal" href="step1_sync_scalar.html"><span class="doc">Synchronous update of Scalar RTP</span></a>, <a class="reference internal" href="step2_async_scalar.html"><span class="doc">Asynchronous Update of Scalar RTP</span></a>, and <a class="reference internal" href="step3_async_array.html"><span class="doc">Asynchronous Update of Array RTP</span></a> still apply here. Details about tool options and host code in <a class="reference internal" href="step1_sync_scalar.html"><span class="doc">Synchronous Update of Scalar RTP</span></a> are similar.</p>
 <p>In Linux mode, the following header files are required for the ADF and XRT APIs:</p>
@@ -528,7 +521,6 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEST</span> <span class="n">PASSED</span>
 </pre></div>
 </div>
-
 <h3>Conclusion</h3>
 <p>In this step you learned about:</p>
 <ul class="simple">
@@ -538,10 +530,6 @@
 </ul>
 <p>Next, review <a class="reference internal" href="step5_async_array_update_read.html"><span class="doc">Asynchronous Array RTP Update and Read for AI Engine Kernel</span></a>.</p>
 <p align="center"><sup>Copyright© 2020 Xilinx</sup><br/><sup>XD001</sup></p>
-
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -558,7 +546,6 @@
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

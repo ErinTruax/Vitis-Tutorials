@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,7 +249,7 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>AI Engine GMIO Programming Model</h1>
+
 <p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <p>This example introduces the AI Engine GMIO programming model. It includes three steps:</p>
 <ul class="simple">
@@ -265,7 +263,6 @@ function OptanonWrapper() { }
 - <a class="reference external" href="#conclusion">Conclusion</a></p></li>
 </ul>
 <p>The AI Engine simulator event trace is used to see how performance can be improved step by step. The last step introduces code to make GMIO work in hardware.</p>
-
 <h2>Step 1 - Synchronous GMIO Transfer</h2>
 <p>In this step, the synchronous GMIO transfer mode is introduced. Change the working directory to <code class="docutils literal notranslate"><span class="pre">single_aie_gmio/step1</span></code>. Looking at the graph code <code class="docutils literal notranslate"><span class="pre">aie/graph.h</span></code>, it can be seen that the design has one output <code class="docutils literal notranslate"><span class="pre">gmioOut</span></code> with type <code class="docutils literal notranslate"><span class="pre">output_gmio</span></code>, one input <code class="docutils literal notranslate"><span class="pre">gmioIn</span></code> with type <code class="docutils literal notranslate"><span class="pre">input_gmio</span></code>, and an AI Engine kernel <code class="docutils literal notranslate"><span class="pre">weighted_sum_with_margin</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">mygraph</span><span class="p">:</span> <span class="n">public</span> <span class="n">adf</span><span class="p">::</span><span class="n">graph</span>
@@ -346,7 +343,6 @@ function OptanonWrapper() { }
 <span class="n">GMIO</span><span class="p">::</span><span class="n">free</span><span class="p">(</span><span class="n">doutArray</span><span class="p">);</span>
 </pre></div>
 </div>
-
 <h3>Run AI Engine compiler and AI Engine simulator</h3>
 <p>Run the following make command to compile the design graph <code class="docutils literal notranslate"><span class="pre">libadf.a</span></code> and launch the AI Engine simulator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">aiesim</span>
@@ -359,9 +355,6 @@ function OptanonWrapper() { }
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Trace</span></code> tab in the Vitis™ analyzer. The events are shown as follows:</p>
 <p><img alt="Event trace result" src="../../../../_images/picture1.png"/></p>
 <p>The red arrow denotes the dependency between data transfer and kernel execution. It can be seen that the data transfer and kernel execution are performed in a sequential manner. The time required for kernel execution is much longer than that for data transfer. Next, let us overlay data transfer and kernel execution with a vectorized kernel.</p>
-
-
-
 <h2>Step 2 - Asynchronous GMIO Transfer for Input and Synchronous GMIO Transfer for Output</h2>
 <p>In the previous step, it was identified that the sequential manner of data transfer and kernel execution is the main bottleneck of the design performance. In this step, the AI Engine kernel is replaced with a vectorized version to reduce kernel execution time. Change the working directory to <code class="docutils literal notranslate"><span class="pre">single_aie_gmio/step2</span></code>. The vectorized kernel code is in <code class="docutils literal notranslate"><span class="pre">aie/weighted_sum.cc</span></code>.</p>
 <p>Besides the kernel update, we try to do asynchronous GMIO transfers for inputs, but leave synchronous GMIO transfers for outputs in this step. The purpose of mixing synchronous and asynchronous GMIO transfers is to overlap data transfer and kernel execution. Thus, the performance is further improved.</p>
@@ -376,7 +369,6 @@ function OptanonWrapper() { }
 </pre></div>
 </div>
 <p>Although a non-blocking GMIO API is used to transfer the input data, there is no need for explicit synchronization between data transfer and kernel execution. The synchronization between input data transfer and kernel execution is guaranteed by the window buffer, meaning that every iteration of kernel execution will wait for the block of input data to be ready. The output data is synchronized using a blocking GMIO API. After the blocking API returns, the data is guaranteed to be available in DDR memory and the post-processing sequence can be safely started.</p>
-
 <h3>Run AI Engine compiler and AI Engine simulator</h3>
 <p>Run the following make command to compile the design graph <code class="docutils literal notranslate"><span class="pre">libadf.a</span></code> and launch the AI Engine simulator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">aiesim</span>
@@ -389,9 +381,6 @@ function OptanonWrapper() { }
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Trace</span></code> tab in the Vitis Analyzer. The events are shown as follows:</p>
 <p><img alt="Event trace result" src="../../../../_images/picture2.png"/></p>
 <p>The red arrow denotes the dependency between data transfer and kernel execution and orange rectangle shows overlapping between data transfer and kernel execution. It can be seen that the kernel execution time has been reduced (by comparing to data transfer) and data transfer and kernel execution are overlapping. In the next step, let us explore asynchronous output data transfer and its synchronization mechanism.</p>
-
-
-
 <h2>Step 3 - Asynchronous GMIO Transfer and Hardware Flow</h2>
 <p>In this step, we will see how to asynchronously transfer output data with non-blocking GMIO API, and how to use <code class="docutils literal notranslate"><span class="pre">GMIO::wait</span></code> to perform data synchronization. In addition, we will see how to run the AI Engine program with GMIO in hardware.</p>
 <p>Change the working directory to <code class="docutils literal notranslate"><span class="pre">single_aie_gmio/step3</span></code>. Examine <code class="docutils literal notranslate"><span class="pre">aie/graph.cpp</span></code>. The main difference in code is as follows:</p>
@@ -424,7 +413,6 @@ function OptanonWrapper() { }
 <span class="c1">#endif</span>
 </pre></div>
 </div>
-
 <h3>Run AI Engine simulator and hardware flow</h3>
 <p>Run the following make command to compile the design graph <code class="docutils literal notranslate"><span class="pre">libadf.a</span></code> and launch the AI Engine simulator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">aiesim</span>
@@ -451,9 +439,6 @@ function OptanonWrapper() { }
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PASS!
 </pre></div>
 </div>
-
-
-
 <h2>Conclusion</h2>
 <p>In this example, you learned about the following core concepts:</p>
 <ul class="simple">
@@ -475,9 +460,6 @@ function OptanonWrapper() { }
 <p>See the License for the specific language governing permissions and</p>
 <p>limitations under the License.</p>
 <p align="center" class="sphinxhide"><sup>Copyright© 2020–2021 Xilinx</sup><br/><sup>XD007</sup></p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -494,7 +476,6 @@ function OptanonWrapper() { }
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

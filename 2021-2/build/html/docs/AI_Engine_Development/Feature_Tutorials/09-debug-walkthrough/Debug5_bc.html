@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,15 +241,13 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table>
 <tr>
 <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/>
 </td>
 </tr>
 <tr>
-<td align="center"><h1>AI Engine/PL Kernel Debug with XRT Utilities</h1>
+<td align="center">
 </td>
 </tr>
 </table><p><a class="reference external" href="#xbutil">xbutil</a></p>
@@ -261,7 +259,6 @@ function OptanonWrapper() { }
 <li><p><a class="reference external" href="#Asynchronous-error">Asynchronous error</a></p></li>
 <li><p><a class="reference external" href="#Synchronous-error">Synchronous error</a></p></li>
 </ul>
-
 <h1>xbutil</h1>
 <p>The utility, <code class="docutils literal notranslate"><span class="pre">xbutil</span></code> is supported for PL/AI Engine kernels debug. It provides information for PL/AI Engine kernels.</p>
 <p>To use the tools, binary container, for example, xclbin is required to be loaded first then issue commands to obtain information from, or, configure the kernels.</p>
@@ -320,7 +317,6 @@ GLOBAL OPTIONS:
 <li><p>Each tile’s information such as program counter values, stack pointer are provided.</p></li>
 <li><p>MM2S and S2MM states are available.</p></li>
 </ol>
-
 <h2>xbutil Limitations</h2>
 <ol class="simple">
 <li><p>Commands not applicable to the VCK190 platform:</p></li>
@@ -333,14 +329,9 @@ GLOBAL OPTIONS:
 <ol class="simple">
 <li><p>Utility could show false errors that are no harm to prior-loaded xclbin.</p></li>
 </ol>
-
-
-
 <h1>XRT Error Codes</h1>
-
 <h2>Asynchronous Error</h2>
 <p>An error that occurs asynchronously. It may or may not be related to the XRT function call or the application which is running.</p>
-
 <h3>Report Mechanism with XRT APIs</h3>
 <p>Asynchronous errors are cached in driver subsystems and can be accessed by user application through APIs.
 Asynchronous errors retrieved from the driver are encoded errors defined in <code class="docutils literal notranslate"><span class="pre">xrt_error_code.h</span></code> which is shared between user space and kernel space.</p>
@@ -452,15 +443,11 @@ make package
 </div>
 <p>Step 5: Expected result is as follows.</p>
 <img src="images/bc_err0.png" width="600"/>
-
 <h3>Report Mechanism with xbutil</h3>
 <p>Issue command <code class="docutils literal notranslate"><span class="pre">xbutil2</span> <span class="pre">examine</span> <span class="pre">--report</span> <span class="pre">error</span></code> or/and with formatted output <code class="docutils literal notranslate"><span class="pre">xbutil2</span> <span class="pre">examine</span> <span class="pre">--report</span> <span class="pre">error</span> <span class="pre">--format</span> <span class="pre">JSON-2020.2</span></code> to VCK190 console to get output from console.</p>
 <img src="images/bc_err.png" width="600"/>
-
-
 <h2>Synchronous Error</h2>
 <p>Synchronous errors are errors that can be detected during the XRT runtime function call.</p>
-
 <h3>Report Mechanism</h3>
 <ol class="simple">
 <li><p>Return system error (POSIX) code from</p></li>
@@ -492,14 +479,8 @@ For example:</p></li>
 </pre></div>
 </div>
 <p>Note: Supported error codes are listed in <a class="reference external" href="https://www.xilinx.com/member/versal_ai_core_docs_ea.html">UG1076 Versal ACAP AI Engine Programming Environment</a>.</p>
-
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="https://support.xilinx.com/">support.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
@@ -513,8 +494,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center"><sup>XD005 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -531,7 +510,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

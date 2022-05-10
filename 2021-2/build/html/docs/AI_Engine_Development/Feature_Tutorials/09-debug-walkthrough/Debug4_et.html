@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,19 +241,15 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table>
 <tr>
 <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/>
 </td>
 </tr>
 </table>
-<h1>Introduction</h1>
+
 <p>This tutorial targets the event trace feature running on the hardware board that allows you to understand how the design is executed on hardware. With support from Vitis™ analyzer, you can view the function calls, stalls (both execution and memory), and the flow of execution in the AI Engine. This information is helpful to improve the overall design performance. The steps within this tutorial introduce event trace compilation options, running the design on hardware to generate event trace with XSDB and XRT flows, collect generated event trace data, and launch Vitis_analyzer to review the design execution on hardware.</p>
 <p>This tutorial targets the VCK190 ES board (see https://www.xilinx.com/products/boards-and-kits/vck190.html). This board is currently available via early access. If you have already purchased this board, download the necessary files from the lounge and ensure you have the correct licenses installed. If you do not have a board and ES license, contact your Xilinx sales contact.</p>
-
-
 <h1>Overview</h1>
 <p>In this tutorial you will learn how to:</p>
 <ul class="simple">
@@ -264,18 +260,11 @@ function OptanonWrapper() { }
 <p><a class="reference external" href="#Event-trace-build-options-generation-and-visualization">Event Trace Build Options, Generation and Visualization</a></p>
 <p><a class="reference external" href="#Event-trace-considerations">Event Trace Considerations</a></p>
 <p><a class="reference external" href="#Event-trace-limitations">Event Trace Limitations</a></p>
-
-
 <h1>Event Trace Build Options, Generation and Visualization</h1>
-
 <h2>Step 1. Download tutorial source code</h2>
 <p>Download the design from https://github.com/Xilinx/Vitis-Tutorials/. Go to ${DOWNLOAD_PATH}/AI_Engine_Development/Feature_Tutorials/09-debug-walkthrough to obtain source code of this tutorial.</p>
-
-
 <h2>Step 2. Setup build environmental variables</h2>
 <p>Follow the instructions from the introduction section of https://github.com/Xilinx/Vitis-Tutorials/blob/master/AI_Engine_Development/Feature_Tutorials/09-debug-walkthrough/README.md for  build environmental variables setup.</p>
-
-
 <h2>Step 3. Build the tutorial</h2>
 <p>After source code is downloaded, use the Makefile from this repository.
 Type in “make” to build this event trace tutorial.</p>
@@ -300,8 +289,6 @@ Type in “make” to build this event trace tutorial.</p>
 </ul>
 <p>Issue the command <code class="docutils literal notranslate"><span class="pre">aiecompiler</span> <span class="pre">-h</span></code> to display AI Engine compiler options that include event trace.</p>
 <p>Design with the <code class="docutils literal notranslate"><span class="pre">--event-trace=runtime</span></code> option in build that enables run-time events during compile time. This only needs to build the design once and allows different event trace levels to be generated during run time via XSDB or XRT flow.</p>
-
-
 <h2>Step 4. Prepare hardware board</h2>
 <p>After the design is built, we are ready to run on the hardware board.</p>
 <ul class="simple">
@@ -311,11 +298,8 @@ Type in “make” to build this event trace tutorial.</p>
 <li><p>Set the serial port configuration with Speed=<code class="docutils literal notranslate"><span class="pre">115200</span></code>, Data=<code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bit</span></code>, Parity=<code class="docutils literal notranslate"><span class="pre">none</span></code>, Stop bits=<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">bit</span></code> and flow control=<code class="docutils literal notranslate"><span class="pre">none</span></code>.</p></li>
 <li><p>Power up the vck190 board to see boot messages from serial connection.</p></li>
 </ul>
-
-
 <h2>Step 5. Event trace generation</h2>
 <p>There are two event trace generation flows to generate event trace data for your design, XSDB or XRT.</p>
-
 <h3>Step 5.1. Event trace with XSDB flow</h3>
 <p>Launch hw_server from host computer that has physical connection to vck190 board.</p>
 <p>Launch xsdb from your host computer that built your design:</p>
@@ -333,8 +317,6 @@ Type in “make” to build this event trace tutorial.</p>
 <li><p>-depth <code class="docutils literal notranslate"><span class="pre">0x8000000</span></code> is the size of event trace file. Please adjust accordingly with your design size and amount of event trace data.</p></li>
 <li><p>-config-level specifies functions, functions_partial_stalls, or functions_all_stalls.</p></li>
 </ol>
-
-
 <h3>Step 5.2. Event Trace with XRT flow</h3>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">xrt.ini</span></code> file on SD card using the following lines.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>Debug<span class="o">]</span>
@@ -344,34 +326,23 @@ Type in “make” to build this event trace tutorial.</p>
 </pre></div>
 </div>
 <p>Note: aie_trace_metrics specifies <code class="docutils literal notranslate"><span class="pre">functions</span></code>, <code class="docutils literal notranslate"><span class="pre">functions_partial_stalls</span></code>, or <code class="docutils literal notranslate"><span class="pre">functions_all_stalls</span></code>.</p>
-
-
-
 <h2>Step 6 to Run Application after Petalinux Boots up on Board</h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /mnt/sd-mmcblk0p1
 <span class="nb">export</span> <span class="nv">XILINX_XRT</span><span class="o">=</span>/usr
 ./ps_app.exe a.xclbin
 </pre></div>
 </div>
-
-
 <h2>Step 7. Collect Event Trace Files</h2>
 <p>After the design run completes on the hardware, the generated events and run_summary files need to be collected and ready to be examined.</p>
-
 <h3>Step 7.1. XSDB Flow</h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%xsdb aietrace stop
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">aie_trace_N.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">aie_trace_profile.run_summary</span></code> files are created and transferred to the host computer that launched XSDB. Make sure those files are at the same level as design’s Work directory.</p>
-
-
 <h3>Step 7.2. XRT Flow</h3>
 <p><code class="docutils literal notranslate"><span class="pre">aie_trace_N.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">aie_event_runtime_config.json</span></code> and <code class="docutils literal notranslate"><span class="pre">xrt.run_summary</span></code> files are created on the SD card.
 Transfer <code class="docutils literal notranslate"><span class="pre">aie_trace_N.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">aie_event_runtime_config.json</span></code> and <code class="docutils literal notranslate"><span class="pre">xrt.run_summary</span></code> files from SD card back to where design is at same level as design’s Work directory.</p>
 <p>Note: Generated run summary file is named <code class="docutils literal notranslate"><span class="pre">xrt.run_summary</span></code> from XRT flow, and named <code class="docutils literal notranslate"><span class="pre">aie_trace_profile.run_summary</span></code> for XSDB flow.</p>
-
-
-
 <h2>Step 8. Launch Vitis Analyzer to Examine Event Trace Files</h2>
 <p>Launch Vitis Analyzer tool.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vitis_analyzer
@@ -390,11 +361,7 @@ Transfer <code class="docutils literal notranslate"><span class="pre">aie_trace_
 <p>Zoom in to see detailed information for each state of AI Engine tiles.
 <img src="images/et_va_run.png"/></p>
 <p>Now you know that all the steps of event trace running on hardware board.</p>
-
-
-
 <h1>Event Trace Considerations</h1>
-
 <h2>Event Trace Choice Considerations</h2>
 <p>Based on the design, select GMIO if the design has limited PL resources left for event trace generation. Otherwise, select PLIO for event trace generation.</p>
 <table border="1" class="docutils">
@@ -438,7 +405,6 @@ Transfer <code class="docutils literal notranslate"><span class="pre">aie_trace_
 </tr>
 </tbody>
 </table>
-
 <h2>Number of Event Trace Streams Methodology</h2>
 <table border="1" class="docutils">
 <thead>
@@ -478,20 +444,14 @@ Transfer <code class="docutils literal notranslate"><span class="pre">aie_trace_
 </tr>
 </tbody>
 </table>
-
-
 <h1>Event Trace Limitations</h1>
 <ol class="simple">
 <li><p>Due to limited resources, overruns can be seen from event trace. Follow <a class="reference external" href="#Number-of-event-trace-streams-methodology">Number of event trace streams methodology</a> to configure number of trace streams minimize overruns issue.</p></li>
 <li><p>It is required that the <code class="docutils literal notranslate"><span class="pre">--broadcast-enable-core</span></code> option is used to compile the design. This is to eliminate time sync issues where start time of each tile is off by ~100 ns or more.</p></li>
 <li><p>Run forever applications are supported by XSDB flow only.</p></li>
 </ol>
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="https://support.xilinx.com/">support.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
@@ -505,8 +465,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center"><sup>XD054 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -523,7 +481,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

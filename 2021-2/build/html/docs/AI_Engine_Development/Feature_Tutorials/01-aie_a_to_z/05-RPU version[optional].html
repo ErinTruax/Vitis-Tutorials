@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,10 +249,9 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Introduction</h1>
+
 <p>The previous tutorial is built based on using the A53 core. To migrate it to use the R5 core, follow the instructions on this page.
 The flow is the same but you need to make a few modifications.</p>
-
 <h2>Base Platform Changes</h2>
 <p>The Vivado tools design needs to be modified to have the AI Engine domain mapped into the RPU address space. The Versal ACAP RPU is a 32-bit processor, but addressing the AI Engine requires at least 44 bits.  This issue can be resolved using the address remap capability of the NoC NMU.</p>
 <p>To do this, run the following commands in the Tcl console:</p>
@@ -266,23 +263,17 @@ The flow is the same but you need to make a few modifications.</p>
 </pre></div>
 </div>
 <p>After the block design passes validation, regenerate the output and export the platform XSA file.</p>
-
-
 <h2>Rebuild Simple Application System Project</h2>
 <ol class="simple">
 <li><p>Because the XSA file has been changed, you need to rebuild the base platform first. To rebuild the base platform, right-click the <em><strong>base_pfm_vck190</strong></em> project and select <em><strong>update hardware specifications</strong></em>. Choose the XSA file that you just exported in the previous step.</p></li>
 <li><p>After the XSA file has been updated, click the hammer icon to rebuild the base platform project.</p></li>
 <li><p>After the platform project building completes, rebuild the simple application system project. It is recommended to clean up the project first.</p></li>
 </ol>
-
-
 <h2>Update Fixed Platform</h2>
 <ol class="simple">
 <li><p>Because the simple application system project was rebuilt, the exported fixed platform XSA was changed. Therefore we need to follow the same process to update the <em><strong>AIE_A-to-Z_pfm_vck190</strong></em> platform project. Right-click on it and select <em><strong>update hardware specifications</strong></em>.</p></li>
 <li><p>After the XSA file has been updated, click the hammer icon to rebuild the fixed platform project.</p></li>
 </ol>
-
-
 <h2>PS Application Project Changes</h2>
 <p>The bare-metal application uses AI Engine driver APIs that are included in the BSP of the platform. To point the tool to those libraries, you need to make a few changes to the compiler/linker settings.</p>
 <ol>
@@ -307,9 +298,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center" class="sphinxhide"><sup>Copyright© 2020–2021 Xilinx</sup><br/><sup>XD018</sup></p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -326,7 +314,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

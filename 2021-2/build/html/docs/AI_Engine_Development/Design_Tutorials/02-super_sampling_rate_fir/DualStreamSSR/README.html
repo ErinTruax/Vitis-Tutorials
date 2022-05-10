@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,11 +249,10 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Super Sampling Rate FIR Filter with Dual-Stream Input</h1>
+
 <p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <p>The purpose of this fourth part of the tutorial is to understand how to improve upon the performance already achieved using the two input and output stream connections to the AI Engine.</p>
 <p>Navigate to the <code class="docutils literal notranslate"><span class="pre">DualStreamSSR</span></code> directory to continue.</p>
-
 <h2>Dual-Stream Input Impact</h2>
 <p>In the last two sections (Multi-kernel and Single-Stream SSR) showed that when a single input stream is used, the balance between stream bandwidth and compute performance for <code class="docutils literal notranslate"><span class="pre">cint16</span> <span class="pre">x</span> <span class="pre">cint16</span></code> is obtained for an 8-tap filter implementation in an AI Engine. This can be easily computed. For the slowest speed grade of the versal AI core, the entire AI Engine array (processors, AXI-Stream connections, memory modules, …) is clocked @ 1 GHz. The input stream can transfer 32 bits per clock and a <code class="docutils literal notranslate"><span class="pre">cint16</span></code> variable is 32-bit wide, hence a rate of 1 Gsps (Giga samples per second). The processor by itself is capable of eight <code class="docutils literal notranslate"><span class="pre">cint16xcint16</span></code> operations per clock cycle. The result is that the processor can perform 8-tap filter processing per clock cycle.</p>
 <p>If the two input streams are used in an efficient way, the input sample rate can increase to 2 Gsps (1 Gsps per stream). As the processor performance does not change, it is able to process only four taps per clock cycle at the input sample rate.</p>
@@ -282,8 +279,6 @@ function OptanonWrapper() { }
 <p>The stream content is dependent on the number of samples (bits) which are read as a block on each stream.</p>
 <p>In single-stream implementation, some of the kernels had to discard one sample before the first invocation of the kernel. This was done easily by the initialization function, that was able to discard one sample, but also blocks of eight samples if the coefficient phases were longer than eight coefficients. In dual-stream implementation this is slightly more complex because if one sample is read from Stream 0 beforehand, the stream combination will be completely disorganized. To avoid changing the stream content in this case we reorganized the computation and started to compute one sample after (change the <em>Start</em> parameter of the <code class="docutils literal notranslate"><span class="pre">mul4/mac4</span></code> intrinsic).</p>
 <p>On top of this, if the coefficient phase is longer than four, four elements need to be discarded. If it is longer than eight, eight need to be discarded etc. The first four elements must be read from Stream 0, the next four from Stream 1 and then again from Stream 0. If more blocks of four elements are read from Stream 0 than from Stream 1, then the first stream to read within the kernel is Stream 1.</p>
-
-
 <h2>Designing the Graph</h2>
 <p>With the input data rate being 2 Gsps on each AI Engine and the filter having 32 taps, the data stream and coefficient can be split into eight phases as each AI Engine is capable of 4-tap filter processing. This leads to 2 Gsps x 8 Phases = 16 Gsps input sample rate, the maximum performance for the filter you will now design.</p>
 <p>The same recommendations as in the previous section will apply:</p>
@@ -292,8 +287,6 @@ function OptanonWrapper() { }
 <li><p>One row in every two has a cascade stream in the other direction, leading to a differentiated set of stream for even and odd rows.</p></li>
 <li><p>The kernels above the diagonal (lower left to upper right) should discard one element in the stream.</p></li>
 </ul>
-
-
 <h2>C++ Code Analysis</h2>
 <p>The kernel definition is now different from the single-stream implementation. The class definition is close, but there is now one more parameter in the template:</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="kt">int</span> <span class="n">NSamples</span><span class="p">,</span><span class="kt">int</span> <span class="n">ShiftAcc</span><span class="p">,</span><span class="kt">bool</span> <span class="n">DiscardSample</span><span class="p">,</span><span class="kt">bool</span> <span class="n">SwapRead</span><span class="o">&gt;</span>
@@ -423,8 +416,6 @@ function OptanonWrapper() { }
 </div>
 <p>In row 0, no kernel should discard any sample, in row 1, only the first kernel discards one sample, etc…</p>
 <p>Finally, all kernels must be connected together with the cascade stream in between them, and the input streams for all of them.</p>
-
-
 <h2>Compilation and Analysis</h2>
 <p>Ensure the <code class="docutils literal notranslate"><span class="pre">InitPythonPath</span></code> has been sourced in the <code class="docutils literal notranslate"><span class="pre">Utils</span></code> directory.</p>
 <p>Navigate to the <code class="docutils literal notranslate"><span class="pre">MultiKernel</span></code> directory. In the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> three methods are defined:</p>
@@ -493,16 +484,11 @@ function OptanonWrapper() { }
 </pre></div>
 </div>
 <p>Which is almost the expected maximum.</p>
-
-
-
 <h1>Vitis Model Composer Implementation</h1>
 <p>In the <code class="docutils literal notranslate"><span class="pre">vitis_model_composer</span></code> directory, launch Vitis Model Composer with the <code class="docutils literal notranslate"><span class="pre">model_composer</span></code> command. There is currently one design in this directory, <code class="docutils literal notranslate"><span class="pre">DualStreamSSR.slx</span></code>.</p>
 <p>This is an 8-phase SSR built in the AI Engine array using the AI Engine blockset of Vitis Model Composer. The design is fed from pure Simulink blocks and the result is diplayed in a scope to verify that the difference with the pure floating-point Simulink implementation is not too high. At the same time, the signal is sent through a spectrumscope to verify the output spectrum.</p>
 <p><img alt="SSR8_VMC" src="../../../../../_images/SSR8_VMC.jpg"/></p>
 <p align="center"><sup>Copyright© 2020–2021 Xilinx</sup><br/><sup>XD020</sup></p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -519,7 +505,6 @@ function OptanonWrapper() { }
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

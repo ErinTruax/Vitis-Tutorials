@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -276,8 +276,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -286,9 +284,8 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>DSP Library Tutorial</h1>
-<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 
+<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <h2>Table of Contents</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
@@ -298,12 +295,9 @@ function OptanonWrapper() { }
 <li><p><a class="reference external" href="#part-3-optimizing-filter-performance">Part 3: Optimizing Filter Performance</a></p></li>
 <li><p><a class="reference external" href="#references">References</a></p></li>
 </ul>
-
-
 <h2>Introduction</h2>
 <p>The Xilinx® Versal™ adaptive compute acceleration platform (ACAP) is a fully software-programmable, heterogeneous compute platform that combines the processing system (PS) (Scalar Engines that include Arm® processors), Programmable Logic (PL) (Adaptable Engines that include the programmable logic), and AI Engines which belong in the Intelligent Engine category.</p>
 <p>This tutorial demonstrates how to use kernels provided by the DSP Library for a filtering application, how to analyze the design results, and how to use filter parameters to optimize the design’s performance using simulation. It does not take the design to a hardware implementation, however.</p>
-
 <h3>Objectives</h3>
 <p>After completing the tutorial, you should be able to:</p>
 <ul class="simple">
@@ -311,8 +305,6 @@ function OptanonWrapper() { }
 <li><p>Evaluate the performance and resource utilization metrics of a design</p></li>
 <li><p>Adjust filter parameters to meet system performance requirements</p></li>
 </ul>
-
-
 <h3>Tutorial Overview</h3>
 <p>This tutorial shows how to construct a simple two-stage decimation filter. This filter is not targeted at a specific real-life application, but is used to show how to use the DSP Library to construct filter chains.</p>
 <ul class="simple">
@@ -320,8 +312,6 @@ function OptanonWrapper() { }
 <li><p>Part 2 shows how to cascade filters together into a chain</p></li>
 <li><p>Part 3 shows how to optimize performance of the filter chain by tuning individual filters</p></li>
 </ul>
-
-
 <h3>Directory Structure</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dsplib_tutorial_install
 ├───images     images for this README
@@ -336,18 +326,12 @@ function OptanonWrapper() { }
     └───src
 </pre></div>
 </div>
-
-
-
 <h2>Before You Begin</h2>
-
 <h3><em>Documentation</em>: Explore AI Engine Architecture</h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://forums.xilinx.com/t5/Design-and-Debug-Techniques-Blog/Versal-ACAP-AI-Engines-for-Dummies/ba-p/1132493">Versal ACAP AI Engines for Dummies</a></p></li>
 <li><p><a class="reference external" href="https://www.xilinx.com/support/documentation/architecture-manuals/am009-versal-ai-engine.pdf">AM009 AI Engine Architecture Manual</a></p></li>
 </ul>
-
-
 <h3><em>Tools</em>: Installing the Tools</h3>
 <p>Tools Documentation:</p>
 <ul class="simple">
@@ -361,8 +345,6 @@ function OptanonWrapper() { }
 <li><p>Download the <a class="reference external" href="https://github.com/Xilinx/Vitis_Libraries/tree/master/dsp">DSP Library</a></p></li>
 <li><p>Download and setup the <a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html#docs">VCK190 Vitis Platform for 2021.2</a></p></li>
 </ul>
-
-
 <h3><em>Environment</em>: Setting Up Your Target Platform Environment</h3>
 <p>When the elements of the Vitis software platform are installed, update the target platform environment script.</p>
 <p>Edit the provided template setup script <code class="docutils literal notranslate"><span class="pre">env_setup.sh</span></code> in your favourite text editor. Replace the placeholders with the appropriate paths:</p>
@@ -375,28 +357,19 @@ function OptanonWrapper() { }
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> env_setup.sh
 </pre></div>
 </div>
-
-
 <h3><em>Validation</em>: Confirming Tool Installation</h3>
 <p>Ensure that you are using the 2021.1 version of Xilinx tools.</p>
-
-
-
 <h2><em>Validation</em>: Confirming Tool Installation</h2>
 <p>Ensure that you are using the 2021.2 version of Xilinx tools.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>which vitis
 which aiecompiler
 </pre></div>
 </div>
-
 <h3><em>Other Tutorials</em>: Learn Basic Vitis Compiler and AI Engine Concepts</h3>
 <p>For novice users, following link provides tutorials to understand the basic Vitis compiler concepts and building simple AI Engine designs:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/Xilinx/Vitis-Tutorials">https://github.com/Xilinx/Vitis-Tutorials</a></p></li>
 </ul>
-
-
-
 <h2>Part 1: Creating a Single Kernel Graph</h2>
 <p>Part 1 of this tutorial will:</p>
 <ul class="simple">
@@ -406,7 +379,6 @@ which aiecompiler
 <li><p>compile and simulate the design</p></li>
 <li><p>evaluate the results.</p></li>
 </ul>
-
 <h3>Creating the Project</h3>
 <ol>
 <li><p>To begin this tutorial, create a new workspace directory, and start the Vitis environment:</p>
@@ -440,8 +412,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <ol class="simple">
 <li><p>Click <strong>Apply and Close</strong>, then respond <strong>Yes</strong> when asked if you want the index rebuilt.</p></li>
 </ol>
-
-
 <h3>Understanding the Source Files</h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">system_settings.h</span></code> files is a standard header file that defines the constants used in this project. It includes the header file “&lt;adf.h&gt;”. This is the Adaptive Data Flow (ADF) header file, which provides the classes used for specifying graphs. It also includes the FIR Filter kernel’s header file, <code class="docutils literal notranslate"><span class="pre">fir_sr_sym_graph.hpp</span></code>.</p>
 <p>The design itself it implemented in <code class="docutils literal notranslate"><span class="pre">fir_graph.h</span></code>. A graph is used to define elements and the connections between them that make up the design. We will go over some of the key aspects of this file.</p>
@@ -501,8 +471,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <span class="p">}</span>
 </pre></div>
 </div>
-
-
 <h3>Build AI Engine Emulation</h3>
 <p>After the design files are complete, the next step is to choose a target by selecting a build configuration.</p>
 <p>There are three build configurations:</p>
@@ -519,8 +487,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 </ol>
 <p>After the build configuration is selected, you only need to click on the hammer symbol to (re)compile the project.</p>
 <p>Building the project invokes the AI Engine compiler, which compiles the design, and maps it to the AI Engine tiles.</p>
-
-
 <h3>Using Vitis Analyzer to look at the Compilation Results</h3>
 <p>From the <em>Assistant</em> pane, expand the application (displib_tutorial_part_1), then expand the <strong>Emulation-AIE</strong> section, and double-click <strong>Compile Summary</strong>. Vitis Analyzer will now open.  After it opens, it will display the Summary page, which provides a brief summary of the project.</p>
 <p><img alt="Vitis Analyzer Summary" src="../../../../_images/DSPLib_tutorial_part_1_Vitis_Analyzer_Summary.png"/></p>
@@ -530,8 +496,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <p><img alt="Vitis Analyzer Array" src="../../../../_images/DSPLib_tutorial_part_1_Vitis_Analyzer_Array.png"/></p>
 <p>You can select the other entries on the navigation bar to see additional implementation details.</p>
 <p>When you are done examining the design, click <strong>File -&gt; Exit</strong></p>
-
-
 <h3>Running the Design through Simulation</h3>
 <ol class="simple">
 <li><p>In the <em>Explorer</em> pane, right-click on the application project <strong>dsplib_tutorial_part_1</strong>, and select <strong>Run As -&gt; Run Configurations…</strong>.</p></li>
@@ -539,22 +503,16 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <li><p>Give the configuration a name, <strong>AI Engine Emulation Config</strong>.</p></li>
 <li><p>Select the <strong>Main</strong> tab, check the <strong>Generate Trace</strong> checkbox, and select <strong>VCD</strong>. Click <strong>Run</strong>. The simulation will begin execution and the log appears on the <em>Console</em> pane below. Wait for the simulation to complete (the status bar on the lower right corner will disappear).</p></li>
 </ol>
-
-
 <h3>Using Vitis Analyzer to look at the Simulation Results</h3>
 <p>From the <em>Assistant</em> pane, expand the application <strong>displib_tutorial_part_1</strong>, then expand the <strong>Emulation-AIE</strong> section, and double-click <strong>Run Summary</strong>. Vitis Analyzer will now open. After it opens, it will display the <em>Summary</em> page, which provides a brief summary of the simulation.</p>
 <p>Selecting <strong>Trace</strong> on the navigation bar shows the simulation trace. Here you can see kernel activity, the DMA transfer activity, locks for the ping-pong buffers, etc.</p>
 <p><img alt="Vitis Analyzer Trace" src="../../../../_images/DSPLib_tutorial_part_1_Vitis_Analyzer_Trace.png"/></p>
-
-
-
 <h2>Part 2: Creating a Multi Kernel Graph</h2>
 <p>Part 2 of this tutorial will:</p>
 <ul class="simple">
 <li><p>demonstrate how to connect together filters to create a filter chain.</p></li>
 <li><p>show how to identify areas for optimization within the chain</p></li>
 </ul>
-
 <h3>Creating the Project</h3>
 <p>For this part, you can create a new workspace and import the source files for part 2 as you did for part 1, or you can save some time and import the existing ZIP of the project provided.  For Part 2, we will demonstrate the latter option.</p>
 <ol class="simple">
@@ -563,8 +521,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <li><p>Select <strong>Vitis project exported zip file</strong> and click <strong>Next</strong>.</p></li>
 <li><p>Navigate to <strong>&lt;dsplib_tutorial_install&gt;/part_2</strong>, select <strong>dsplib_tutorial_part_2.ide.zip</strong>, click <strong>Open</strong>, and then click <strong>Finish</strong>. The reconstituted project should then appear in the Explorer pane.</p></li>
 </ol>
-
-
 <h3>Changes to the Filter Graph from Part 1</h3>
 <p>For Part 2, we have cascaded a halfband filter after the FIR filter that was in the design in part 1.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">system_settings.h</span></code> file, constants for the halfband filter have been added, as well as the kernel’s header file, <code class="docutils literal notranslate"><span class="pre">fir_interpolate_hb_graph.hpp</span></code>.</p>
@@ -585,17 +541,11 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 </pre></div>
 </div>
 <p>The testbench file, <code class="docutils literal notranslate"><span class="pre">test.cpp</span></code>, is unchanged.</p>
-
-
 <h3>Build AI Engine Emulation</h3>
 <p>Building the AI Engine emulation for part 2 is identical to part 1, as described previously.</p>
 <p>If the build was successful, you can continue straight on through to simulation.</p>
-
-
 <h3>Running the Design through Simulation</h3>
 <p>Running part 2 through simulation is identical to part 1, as described previously.</p>
-
-
 <h3>Using Vitis Analyzer to look at the Compilation and Simulation Results</h3>
 <p>From the Assistant pane, expand the application <strong>displib_tutorial_part_2</strong>, then expand the <strong>Emulation-AIE</strong> section, and double-click <strong>Run Summary</strong>. Vitis Analyzer will now open. After it opens, it will display the Summary page, which provides a brief summary of the simulation.</p>
 <p>Selecting <strong>Graph</strong> on the navigation bar shows a diagram of the filter implementation. In this version of the graph, we can now see the two kernels, each implemented in the own AI Engine tile.</p>
@@ -605,19 +555,13 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <p>Selecting the <strong>Trace</strong> option on the navigation bar shows the tile (18,0) (the chan_FIR kernel) spending most of its time running kernel code, while tile (19,0) (hb_FIR) spends significant time being idle in _main. chan_FIR is the bottleneck in this datapath, which is not surprising because it has many more taps to compute.</p>
 <p><img alt="Vitis Analyzer Trace" src="../../../../_images/DSPLib_tutorial_part_2_Vitis_Analyzer_Trace.png"/></p>
 <p>In part 3, we are going to use filter parameters to attempt to increase the performance of the chan_FIR filter, to increase overall performance of the chain.</p>
-
-
-
 <h2>Part 3: Optimizing Filter Performance</h2>
 <p>Part 3 of this tutorial will:</p>
 <ul class="simple">
 <li><p>demonstrate how to use the CASC_LEN parameter to increase filter performance.</p></li>
 </ul>
-
 <h3>Creating the Project</h3>
 <p>Creating part 3 of this project is identical to part 2, as described previously.</p>
-
-
 <h3>Changes to the Filter Graph from Part 1</h3>
 <p>For Part 3, we are going to increase the performance of the design by adjusting the TP_CASC_LEN parameter on the chan_FIR filter.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">system_settings.h</span></code>, the following parameter has been changed:</p>
@@ -633,17 +577,11 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 </pre></div>
 </div>
 <p>The testbench file, <code class="docutils literal notranslate"><span class="pre">test.cpp</span></code>, is unchanged.</p>
-
-
 <h3>Build AI Engine Emulation</h3>
 <p>Building the AI Engine emulation for part 3 is identical to part 1, as described previously.</p>
 <p>If the build was successful, you can continue straight on through to simulation.</p>
-
-
 <h3>Running the Design through Simulation</h3>
 <p>Running part 3 through simulation is identical to part 1, as described previously.</p>
-
-
 <h3>Using Vitis Analyzer to look at the Compilation and Simulation Results</h3>
 <p>From the Assistant pane, expand the application <strong>displib_tutorial_part_3</strong>, then expand the <strong>Emulation-AIE</strong> section, and double-click <strong>Run Summary</strong>. Vitis Analyzer will now open. After it opens, it will display the Summary page, which provides a brief summary of the simulation.</p>
 <p>Selecting <strong>Graph</strong> on the navigation bar shows a diagram of the filter implementation. It illustrates the data connectivity points into and out of the graph (128-bit interfaces), and the symmetrical FIR filter kernel being implemented on five tiles, followed by a single tile implementing the halfband filter.</p>
@@ -652,9 +590,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <p><img alt="Vitis Analyzer Array" src="../../../../_images/DSPLib_tutorial_part_3_Vitis_Analyzer_Array.png"/></p>
 <p>Selecting the <strong>Trace</strong> option on the navigation bar now shows the channel filter tiles ((18,0) through (22,0)) almost fully occupied with processing the data; the computational load between the channel filter’s constituent engines now matching that of the halfband filter (23,0). The design now completes in 8 iterations in 24 microseconds, compared to 57.</p>
 <p><img alt="Vitis Analyzer Trace" src="../../../../_images/DSPLib_tutorial_part_3_Vitis_Analyzer_Trace.png"/></p>
-
-
-
 <h2>Conclusion</h2>
 <p>This tutorial has demonstrated the following:</p>
 <ul class="simple">
@@ -666,36 +601,23 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <li><p>How to adjust FIR parameters to tune the design performance</p></li>
 </ul>
 <p>In doing so, it has hopefully provided a foundation upon which the user can begin to create their own designs in Vitis using the DSP Library.</p>
-
-
 <h2>References</h2>
 <p>The following documents provide supplemental material useful with this tutorial.</p>
-
 <h3><a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2021_2/ug1076-ai-engine-environment.pdf">UG1076 Versal ACAP AI Engine Programming Environment</a></h3>
 <p>Contains chapters on how to develop AI Engine graphs, how to use the Ai Engine compiler, and AI Engine simulation, and performance analysis.</p>
-
-
 <h3><a class="reference external" href="https://xilinx.github.io/Vitis_Libraries/dsp/2021.2/index.html">Vitis DSP Library (DSPLib) Documentation</a></h3>
 <p>Contains information regarding the DSPLib example kernels used by this tutorial.</p>
-
-
 <h3><a class="reference external" href="https://docs.xilinx.com/v/u/en-US/ug1416-vitis-documentation">Vitis Unified Software Development Platform 2021.2 Documentation</a></h3>
 <p>Following links point to Vitis software platform related documents referred in this tutorial:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1393-vitis-application-acceleration">Vitis Application Acceleration Development Flow Documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/Xilinx/Vitis-Tutorials">Vitis Application Acceleration Development Flow Tutorials</a></p></li>
 </ul>
-
-
-
 <h2>License</h2>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 <p align="center"><sup>XD022 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -716,7 +638,6 @@ Right-click on <strong>dsplib_tutorial_part_1</strong>, and click on <strong>C/C
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -252,10 +250,7 @@ function OptanonWrapper() { }
 </tr>
 </table><p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 
-<h1>AI Engine GMIO Performance Profile</h1>
 <p>=======</p>
-
-
 <h1>AI Engine GMIO Performance Profile</h1>
 <blockquote>
 <div><p><strong>Note</strong>: This tutorial targets the <a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/vck190.html">VCK190 ES board</a>. This board is currently available via early access. If you have already purchased this board, download the necessary files from the lounge and ensure you have the correct licenses installed. If you do not have a board and ES license, contact your Xilinx sales contact.</p>
@@ -278,7 +273,6 @@ has 16 AI Engine to NoC master unit (NMU) in total. For each AI Engine to NMU, i
 </div></blockquote>
 </div></blockquote>
 <p>In this example, 32 AI Engine GMIO inputs, 32 AI Engine GMIO outputs are utilized in the graph and the performance from one input and one output to 32 inputs and 32 outputs through various ways is profiled. Then you will learn about the NOC bandwidth and the advantages and disadvantages of choosing GMIO for data transfer.</p>
-
 <h2>Design Introduction</h2>
 <p>This design has a graph that has 32 AI Engine kernels. Each kernel has one input and one output. Thus, 32 AI Engine GMIO inputs and 32 AI Engine GMIO outputs are connected to the graph.</p>
 <p>Change the working directory to <code class="docutils literal notranslate"><span class="pre">perf_profile_aie_gmio</span></code>. Take a look at the graph code in <code class="docutils literal notranslate"><span class="pre">aie/graph.h</span></code>.</p>
@@ -383,14 +377,8 @@ has 16 AI Engine to NoC master unit (NMU) in total. For each AI Engine to NMU, i
 </pre></div>
 </div>
 <p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-
 <h3>Performance Profiling Methods</h3>
-
-
-
-
 <h1>In this example, some methods for profiling the design are introduced. The code to be profiled is in <code class="docutils literal notranslate"><span class="pre">aie/graph.cpp</span></code>:</h1>
-
 <h2>Performance Profiling Methods</h2>
 <p>In this example, we will introduce some methods for profiling the design. The code to be profiled is in <code class="docutils literal notranslate"><span class="pre">aie/graph.cpp</span></code>:</p>
 <blockquote>
@@ -566,7 +554,6 @@ PASS!
 </pre></div>
 </div>
 <p>It is seen that when the used GMIO ports number increases, the performance for the specific GMIO port drops, indicating that the total system throughput is limited by NOC and DDR bandwidth.</p>
-
 <h3>Conclusion</h3>
 <p>In this tutorial, you learned about:</p>
 <ul class="simple">
@@ -586,10 +573,6 @@ PASS!
 <p>See the License for the specific language governing permissions and</p>
 <p>limitations under the License.</p>
 <p align="center" class="sphinxhide"><sup>Copyright© 2020–2021 Xilinx</sup><br/><sup>XD007</sup></p>
-
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -606,7 +589,6 @@ PASS!
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

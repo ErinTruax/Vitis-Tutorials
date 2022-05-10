@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -273,8 +273,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -283,14 +281,11 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Designing with the AI Engine DSPLib and Vitis Model Composer</h1>
-<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 
+<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <h2>Introduction</h2>
 <p>The purpose of this tutorial is to provide hands-on experience for designing AI Engine applications using Model Composer. This tool is a set of blocksets for Simulink that makes it easy to develop applications for Xilinx devices, integrating RTL/HLS blocks for the Programmable Logic, as well as AI Engine blocks for the AI Engine array.
 Vitis Model Composer can be used to create complex systems targeting the PL (RTL and HLS blocksets) and the AI Engine array (AIE blockset) at the same time. The complete system can be simulated in Simulink, and the code generated (RTL for the PL and C++ graph for the AI Engine array).</p>
-
-
 <h2>Before You Begin</h2>
 <p>Install the tools:</p>
 <ul class="simple">
@@ -323,8 +318,6 @@ Vitis Model Composer can be used to create complex systems targeting the PL (RTL
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
-
-
 <h2>Overview</h2>
 <p>The goal of this tutorial is to implement the Decimation Filter Chain depicted below:</p>
 <p><img alt="Decimation Filter Chain" src="../../../../_images/DecimationChain.svg"/></p>
@@ -375,8 +368,6 @@ Vitis Model Composer can be used to create complex systems targeting the PL (RTL
 <li><p>XMC_DSPLib_Solution_Stage3.slx</p></li>
 </ul>
 <p>These are there to help you if you cannot complete any of the 3 stages.</p>
-
-
 <h2>Stage 1: Create and Simulate the Design</h2>
 <ol class="simple">
 <li><p>On the MATLAB GUI, select the <strong>Home Tab</strong> and click <strong>Simulink</strong>.</p></li>
@@ -586,8 +577,6 @@ Vitis Model Composer can be used to create complex systems targeting the PL (RTL
 <ol class="simple">
 <li><p>Run the design. The added filters are compiled and the design is run through the 5000 samples. The difference between the output should still be 0.</p></li>
 </ol>
-
-
 <h2>Stage 2: Further Analysis of the Design</h2>
 <p>When creating a DSP design, one of the most important parameters to consider is the spectrum. In Simulink the spectrum can be easily displayed using a spectrum scope.</p>
 <ol class="simple">
@@ -636,8 +625,6 @@ Vitis Model Composer can be used to create complex systems targeting the PL (RTL
 <p>If you want to save some data in a workspace variable for some more complex analysis. This can be done using the <strong>Variable Size Signal</strong> to Workspace block within the <strong>Xilinx Toolbox –&gt; AI Engine –&gt; Tools  blockset</strong>:</p>
 <p><img alt="missing image" src="../../../../_images/Image_015.png"/></p>
 <p>All the simulations that occur in Simulink are the so-called ‘Emulation-SW’. These types of simulation are bit-exact, but they do not provide any information about timing.</p>
-
-
 <h2>Stage 3: Generate the Code and Perform Emulation-AI Engine</h2>
 <p>In this stage you will generate the graph code of this design and perform bit-true and cycle true simulations with the AI Engine Simulator.</p>
 <ol class="simple">
@@ -701,8 +688,6 @@ Vitis Model Composer can be used to create complex systems targeting the PL (RTL
 <p>Vitis Analyzer is then launched. From here you can see the <strong>Graph View</strong>, the <strong>Array View</strong>, the <strong>Timeline</strong>, and the <strong>Profile</strong> information.</p>
 <p><img alt="missing image" src="../../../../_images/Image_022.png"/></p>
 <p><img alt="missing image" src="../../../../_images/Image_023.png"/></p>
-
-
 <h2>Conclusion</h2>
 <p>Model Composer is a very efficient way to create graphs either using your own kernels or using the DSPLib FIR Filter (other blocks will be available in subsequent releases).</p>
 <p>This tool shows its incredible flexibility when it comes to display spectrum or save data at any stage of the graph. All the source and sink blocks can be used anywhere, allowing you to efficiently debug your design in all corner cases.</p>
@@ -720,9 +705,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center"><sup>XD058 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -743,7 +725,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

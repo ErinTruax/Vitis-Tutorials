@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,9 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -252,7 +249,7 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>AI Engine Deadlock Analysis</h1>
+
 <p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <p>This tutorial introduces you to some common deadlock scenarios and shows you how to detect deadlocks (design hangs) in different tool flows. The methods introduced to detect and analyze deadlock issues include:</p>
 <ol class="simple">
@@ -263,15 +260,12 @@ function OptanonWrapper() { }
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">devmem</span></code> Linux command to probe AI Engine registers.</p></li>
 </ol>
 <p><strong>Note:</strong> The default working directory in this step is <code class="docutils literal notranslate"><span class="pre">testcase_nofifo_hang</span></code>, unless explicitly stated otherwise.</p>
-
 <h2>Common Deadlock Scenarios</h2>
 <p>A deadlock is usually caused by insufficient FIFOs, or the access rate not matching between multiple FIFOs (or different branches of the same net in stream multicast). The following figure shows some deadlock scenarios:</p>
 <p><img alt="Deadlock Scenarios" src="../../../../_images/figure51.PNG"/></p>
 <p><strong>Scenario 1:</strong> This scenario occurs when K1 tries to write to FIFO0, but the FIFO is full. K2 is still waiting for data coming from FIFO1 before consuming data from FIFO0.</p>
 <p><strong>Scenario 2:</strong> This scenario occurs when NET0 multicasts to multiple destinations, and the destinations are connected by stream or cascade stream (FIFO1). The NET0 branch 1 is full because K2 is waiting for data from FIFO1, but K1 is still hungry for data from NET0 branch 0 to produce data for FIFO1.</p>
 <p><strong>Scenario 3:</strong> This scenario occurs when K1 and K2 are connected by buffers (including RTP buffers) and streams. When K1 is trying to write data to K2 using FIFO0, K2 is still trying to acquire lock for the ping or pong buffer. K1 will not release the lock of the buffer until it finishes its current iteration.</p>
-
-
 <h2>AI Engine Deadlock Example and Analysis in AI Engine Simulator</h2>
 <p>The example is similar to the one used in <a class="reference internal" href="aie_execution_measurement.html"><span class="doc">AI Engine Execution and Measurement</span></a>, except that it does not have a FIFO for the stream connection:</p>
 <p><img alt="Deadlock Example Graph" src="../../../../_images/figure61.PNG"/></p>
@@ -307,7 +301,6 @@ function OptanonWrapper() { }
 <p><strong>4:</strong> S2mm is waiting for kernel <code class="docutils literal notranslate"><span class="pre">aie_dest1</span></code> to release buffer <code class="docutils literal notranslate"><span class="pre">buf0</span></code>.</p>
 </li>
 </ol>
-
 <h3>AI Engine Stall Analysis with Vitis Analyzer</h3>
 <p>Vitis Analyzer can use the event trace from the AI Engine simulation to do stall analysis that shows an overview of the stall status in metrics. It also helps you determine where the stall has happened, and the possible causes.</p>
 <p>If you are using Vitis Analyzer to do stall analysis, run the AI Engine simulator with <code class="docutils literal notranslate"><span class="pre">--online</span> <span class="pre">-wdb</span> <span class="pre">-ctf</span></code> options to generate event trace information in the background:</p>
@@ -327,9 +320,6 @@ aiesimulator --pkg-dir=./Work --online -wdb -ctf
 <p><img alt="Lock stall in Graph View" src="../../../../_images/c.PNG"/></p>
 <p>From the above analysis, the cause of the hang is given. The direct resolution, without modifying kernel code, is to increase the FIFO size between the two kernels.</p>
 <p>For more information about AI Engine stall analysis feature, refer to the <em>Versal ACAP AI Engine Programming Environment User Guide</em> (<a class="reference external" href="https://docs.xilinx.com/r/en-US/ug1076-ai-engine-environment">UG1076</a>).</p>
-
-
-
 <h2>AI Engine Deadlock Detection in the Hardware Emulation Flow</h2>
 <p>Like AI Engine simulator, the hardware emulation flow can also dump VCD for AI Engine. To dump VCD, write <code class="docutils literal notranslate"><span class="pre">AIE_DUMP_VCD=foo</span></code> in a file and specify this file for the <code class="docutils literal notranslate"><span class="pre">-aie-sim-options</span></code> option of <code class="docutils literal notranslate"><span class="pre">launch_hw_emu.sh</span></code>.</p>
 <p>It is usually helpful to view the input and output of AI Engine in the waveform. The <code class="docutils literal notranslate"><span class="pre">-g</span></code> option can be added to <code class="docutils literal notranslate"><span class="pre">launch_hw_emu.sh</span></code> to launch the XSIM waveform. The command looks like the following:</p>
@@ -354,8 +344,6 @@ vitis_analyzer aiesimulator_output/default.aierun_summary
 ```
 </pre></div>
 </div>
-
-
 <h2>AI Engine Deadlock Detection in the Hardware Flow</h2>
 <p>If a deadlock does not show in the AI Engine simulator or hardware emulation flows, it might still show in the hardware flow.</p>
 <p>The PS code to profile how much data has been transferred for the input and output is shown below:</p>
@@ -393,7 +381,6 @@ Input data sent:104
 </div>
 <p>From how much data has been transferred for the input and output, the status of the design can be estimated. The <code class="docutils literal notranslate"><span class="pre">graph.wait(50000)</span></code> in the above code can be replaced with <code class="docutils literal notranslate"><span class="pre">sleep</span></code> or <code class="docutils literal notranslate"><span class="pre">usleep</span></code> APIs to wait a certain amount of time depending on the scale of the design.</p>
 <p>If necessary, an Integrated Logic Analyzer (ILA) can be inserted to probe the interfaces of the PL kernels to detect the AI Engine and PL kernels’ running status.</p>
-
 <h3>Methods to Detect AI Engine Status in Hardware Emulation and Hardware</h3>
 <p>This section provides details of other methods of detecting and analyzing AI Engine running status.</p>
 <ul>
@@ -553,14 +540,8 @@ Input data sent:104
 <p>Value <code class="docutils literal notranslate"><span class="pre">0x00001000</span></code> indicates that it is <code class="docutils literal notranslate"><span class="pre">Stream_Stall_MS0</span></code>, and value <code class="docutils literal notranslate"><span class="pre">0x00000200</span></code> indicates that it is <code class="docutils literal notranslate"><span class="pre">Lock_Stall_E</span></code>. The analysis of the result is similar to using <code class="docutils literal notranslate"><span class="pre">xbutil</span></code>.</p>
 </li>
 </ul>
-
-
 <h3>Conclusion</h3>
 <p>After completing this tutorial, you have learned how to detect and analyze design hang issues.</p>
-
-
-
-
 <h1>Revision History</h1>
 <ul class="simple">
 <li><p>July 2021: Initial release.</p></li>
@@ -571,9 +552,6 @@ Input data sent:104
 </pre></div>
 </div>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -590,7 +568,6 @@ Input data sent:104
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

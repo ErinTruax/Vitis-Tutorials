@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,14 +249,11 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Implementing an IIR Filter on the AI Engine - Part 1b</h1>
-<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 
+<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <h2>Recap</h2>
 <p>In Part 1a, we showed the process of calculating 8 outputs of a second order section of an IIR filter <em>in parallel</em> using the AI engine.</p>
 <p>In this section, we will show how to modify the ADF graph and the testbench for a 6<sup>th</sup> order elliptical lowpass filter.</p>
-
-
 <h2>Julia Script</h2>
 <p><code class="docutils literal notranslate"><span class="pre">aie_iir_1b.jl</span></code> is a <a class="reference external" href="https://julialang.org/">Julia</a> script which can design and generate the required SIMD coefficients for an arbitrary IIR filter.</p>
 <p>In its pristine state, the user parameters are as shown below:</p>
@@ -292,8 +287,6 @@ function OptanonWrapper() { }
 <p><img alt="Fig. 1" src="../../../../../_images/filt10.PNG"/></p>
 <p>The kernel code will remain the same, but the ADF graph and testbench must be slightly modified to accommodate the additional sections.</p>
 <p>Move the generated <code class="docutils literal notranslate"><span class="pre">*.dat</span></code> files into the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory and the generated <code class="docutils literal notranslate"><span class="pre">*.h</span></code> files (coefficient files) into the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.</p>
-
-
 <h2>Adaptive Dataflow (ADF) Graph</h2>
 <p>The modified ADF graph may look something like this:</p>
 <p><code class="docutils literal notranslate"><span class="pre">graph.hpp</span></code></p>
@@ -369,8 +362,6 @@ function OptanonWrapper() { }
 <li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Network_topology">network topology</a> has been modified such that the 3 sections are cascaded.</p></li>
 <li><p>Additional <code class="docutils literal notranslate"><span class="pre">source()</span></code> and <code class="docutils literal notranslate"><span class="pre">runtime&lt;ratio&gt;()</span></code> statements have been added.</p></li>
 </ul>
-
-
 <h2>Testbench Code</h2>
 <p>The testbench may look something like this:</p>
 <p><code class="docutils literal notranslate"><span class="pre">tb.cpp</span></code></p>
@@ -452,13 +443,9 @@ function OptanonWrapper() { }
 <li><p>An additional set of coefficients is included for the other sections.</p></li>
 <li><p>Additional <code class="docutils literal notranslate"><span class="pre">my_graph.update()</span></code> statements are added for the other sections.</p></li>
 </ul>
-
-
 <h2>Building and Running the Design</h2>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">Emulation-SW</span></code> to verify the functionality of the design. Similar to Part1a, we may use Julia to calculate the maximum value of the absolute error between the reference and the generated impulse response (run <code class="docutils literal notranslate"><span class="pre">check1.jl</span></code>). The impulse response error for this 3 stage design is shown below.</p>
 <p><img alt="Fig. 2" src="../../../../../_images/impresp_error1.PNG"/></p>
-
-
 <h2>Changing Coefficients During Runtime</h2>
 <p>We set <code class="docutils literal notranslate"><span class="pre">first_set</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> in <code class="docutils literal notranslate"><span class="pre">aie_iir_1b.jl</span></code> as shown below to generate another set of coefficients for an LPF with a passband of 20MHz.</p>
 <div class="highlight-Julia notranslate"><div class="highlight"><pre><span></span><span class="n">first_set</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>	<span class="c"># true: 1st set; false: 2nd set</span>
@@ -478,26 +465,17 @@ function OptanonWrapper() { }
 <p>The first half of the plot used coefficients for a 10MHz filter, thus only the noisy 2MHz component passed and the 18MHz component was significantly attenuated.</p>
 <p>In the second half, the coefficients are for a 20MHz filter, thus, both 2MHz and 18MHz components are seen at the output.</p>
 <p>The complete design is included in the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">src</span></code> directories. Refer to the aie_exp/Part1 tutorial if you are unfamiliar with building a Vitis design from scratch.</p>
-
-
 <h2>Conclusion</h2>
 <p>We showed how a 6<sup>th</sup> order IIR filter composed of 3 second order sections may be cascaded in the ADF graph.</p>
 <p>We also showed how it is possible to change coefficients at runtime using asynchronous run-time parameters.</p>
 <p>In Part 1, we have focused only on functional verification using <code class="docutils literal notranslate"><span class="pre">Emulation-SW</span></code>. In upcoming installments, we will analyze the design and optimize it for throughput.</p>
-
 <h3>Support</h3>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="http://forums.xilinx.com/">forums.xilinx.com</a>.</p>
-
-
 <h3>License</h3>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 <p align="center"><sup>XD108 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -514,7 +492,6 @@ function OptanonWrapper() { }
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

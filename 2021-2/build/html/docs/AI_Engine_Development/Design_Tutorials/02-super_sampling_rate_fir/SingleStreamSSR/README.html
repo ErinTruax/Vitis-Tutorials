@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,22 +249,17 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Single-Stream Interface</h1>
-<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 
+<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <h2>Super Sampling Rate FIR Filter</h2>
 <p>The purpose of this third part of the tutorial is to understand how to implement a FIR filter that has an input sample rate above the clock frequency of the AI Engine array.</p>
 <p>Navigate to the <code class="docutils literal notranslate"><span class="pre">SingleStreamSSR</span></code> directory to continue.</p>
-
-
 <h2>Super Sampling Rate and Polyphase</h2>
 <p>When the input sampling Rate is above the clock frequency of the processor (Super Sampling Rate), samples must be acquired in parallel. For a 2 Gsps input sample rate, you can specify that the filter should receive two samples at a 1 GHz rate which can be seen as two data streams (Polyphase decomposition), each one at 1 Gsps. Because the AI Engine array AXI-Stream network is limited to 1 GHz (slowest speed grade), the high sampling rate input (above 1 Gsps) will need to be decomposed into multiple phases to be processed.</p>
 <p>As a first example, suppose there is a 2 Gsps data stream to be processed, it can be split in two phases to be routed to the AI Engine array:</p>
 <p><img alt="PolyphaseOrder2" src="../../../../../_images/PolyphaseOrder2.jpg"/></p>
 <p>A 5 Gsps data stream must be split into 5 phases:</p>
 <p><img alt="PolyphaseOrder5" src="../../../../../_images/PolyphaseOrder5.jpg"/></p>
-
-
 <h2>Organize Computation for a 2 Gsps Data Stream in 2 Phases</h2>
 <p>For a single-rate filter, a 2 Gsps input sample rate means also a 2 Gsps output sample rate. Because the input stream is separated into two (even, odd) streams, the output stream must be split the same way.</p>
 <p>Take a look at how <strong>y0</strong> is computed:</p>
@@ -312,8 +305,6 @@ function OptanonWrapper() { }
 <p><img alt="Phase3Out" src="../../../../../_images/Phase3Out.jpg"/></p>
 <p><img alt="Phase3OutDetail" src="../../../../../_images/Phase3OutDetail.jpg"/></p>
 <p>The Data and the Coefficients being split into <em>N</em> Phases (four in this case), the resulting architecture requires <em>N</em>Phases x <em>N</em>Phases (4x4 = 16) to be implemented.</p>
-
-
 <h2>Designing the Graph</h2>
 <p>The kernels created in the previous section can be reused here as the only difference will be the way that thay are connected together. In the preceding images, you can see that there are 16 associations <strong>(Data Phase, Coefficient Phase)</strong>. Also, it can clearly be seen that some of the data streams will have the first data discarded before the computation starts:</p>
 <ul class="simple">
@@ -373,8 +364,6 @@ function OptanonWrapper() { }
 </tbody>
 </table><p>Depending on the row, the latencies are completely different. A latency of less than 32 colock cycle usually gets implemented into the FIFOs included in the AXI-Stream interconnect. Above that number, it gets implemented in a memory module, with an AI Engine serving the inputs and outputs. This would drastically reduce performance. Another possibility is to have these FIFOs implemented in the PL, and have two streams coming from the PL for each column, one serving the even rows and the other serving the odd rows. A single FIFO is required on the first and last columns, but two are necessary for the inner columns:</p>
 <p><img alt="FourPhasesDualStreams" src="../../../../../_images/FourPhasesDualStreams.jpg"/></p>
-
-
 <h2>C++ Code Analysis</h2>
 <p>The kernel definition is exactly the same as the previous part of this tutorial. The only difference is in the graph to encode this 16 kernel four-phase filter.</p>
 <p>At the graph level, all the kernels are first declared in a class:</p>
@@ -452,8 +441,6 @@ function OptanonWrapper() { }
     <span class="p">}</span>
 </pre></div>
 </div>
-
-
 <h2>Compilation and Analysis</h2>
 <p>Ensure the <code class="docutils literal notranslate"><span class="pre">InitPythonPath</span></code> has been sourced in the <code class="docutils literal notranslate"><span class="pre">Utils</span></code> directory.</p>
 <p>Navigate to the <code class="docutils literal notranslate"><span class="pre">MultiKernel</span></code> directory. In the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> three methods are defined:</p>
@@ -507,9 +494,6 @@ function OptanonWrapper() { }
 </pre></div>
 </div>
 <p>This architecture achieves very close to 4 Gsps performance. It is slightly less because of the number of cycles spent for initialization when the kernels are called. This performance increases when the frame length is increased.</p>
-
-
-
 <h1>Vitis Model Composer implementation</h1>
 <p>In the directory <em>vitis_model_composer</em> launch Vitis Model Composer with the comman <strong>model_composer</strong>. There are 2 designs in this directory:</p>
 <ul class="simple">
@@ -558,7 +542,6 @@ function OptanonWrapper() { }
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

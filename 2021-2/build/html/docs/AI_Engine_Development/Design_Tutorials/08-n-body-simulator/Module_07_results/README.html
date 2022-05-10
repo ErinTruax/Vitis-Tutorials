@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,21 +249,16 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Creating the Animation GIF</h1>
+
 <p>You can create a gif from your own <code class="docutils literal notranslate"><span class="pre">data/animation_data.txt</span></code> file using the following command:</p>
 <p><em>Estimated time: 3 minutes</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">animation</span>
 </pre></div>
 </div>
-
 <h2>Results</h2>
 <p>The following is a GIF created from the <code class="docutils literal notranslate"><span class="pre">data/animation_data_golden.txt</span></code> file. You should get a similar GIF from your own data.</p>
-
 <h3>12,800 Particles Simulated on a 400 tile AI Engine Accelerator for 300 Timesteps</h3>
 <p><img alt="alt text" src="../../../../../_images/animation.gif"/></p>
-
-
-
 <h2>Latency Performance Comparisons</h2>
 <p>Following is a table comparing the executions times to simulate 12,800 particles for one timestep on the different N-Body Simulators explored in this tutorial.</p>
 <table border="1" class="docutils">
@@ -298,8 +291,6 @@ function OptanonWrapper() { }
 </tr>
 </tbody>
 </table><p>As you can see, the N-Body Simulator implemented on the AI Engine offers a x2,800 improvement over the Python O(N) implementation and a x24,800 improvement over the C++ O(N<sup>2</sup>) implementation. A vectorized C++ NBody Simulator O(N) implementation can be created with pthreads, but is left as an exercise for the user.</p>
-
-
 <h2>Design Throughput Calculations (Effective vs. Theoretical)</h2>
 <p>The following table describes the total number of floating-point operations (FLOP) for 1 iteration of a single <code class="docutils literal notranslate"><span class="pre">nbody()</span></code> AI Engine kernel:</p>
 <table border="1" class="docutils">
@@ -366,11 +357,8 @@ function OptanonWrapper() { }
 <li><p>PL kernels currently implement a round-robin method of transmitting data. They could be designed to cache and schedule in an optimized way to increate data bandwidth</p></li>
 <li><p>you can refactor the <code class="docutils literal notranslate"><span class="pre">nbody()</span></code> kernel to reduce its reliance on the scalar processor and only use the vector processor in each AI Engine tile by approximating inverse square root</p></li>
 </ul>
-
-
 <h2>(Optional) Building x1_design and x10_design</h2>
 <p>What has been presented so far is the 100 compute unit AI Engine design utilizing all 400 AI Engine tiles. However, to get there you had to create the intermediate AI Engine designs that contain a single compute unit (4 tiles) and 10 compute units (40 tiles). If you wish to run the <code class="docutils literal notranslate"><span class="pre">aiesimulator</span></code>, hardware emulation, or build an AI Engine NBody Simulator with significantly shorter build times, feel free to build the <code class="docutils literal notranslate"><span class="pre">x1_design</span></code> or <code class="docutils literal notranslate"><span class="pre">x10_design</span></code>.</p>
-
 <h3>Building the x1_design (simulates 128 particles)</h3>
 <p><em>Estimated time: 1 hour</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">x1_design</span>
@@ -379,7 +367,6 @@ function OptanonWrapper() { }
 </div>
 <p>128 particles simulated for 300 timesteps</p>
 <p><img alt="alt text" src="../../../../../_images/animation1.gif"/></p>
-
 <h4>Building the x10_design (simulates 1,280 particles)</h4>
 <p><em>Estimated time: 1 hour</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">x10_design</span>
@@ -388,22 +375,13 @@ function OptanonWrapper() { }
 </div>
 <p>1,280 particles simulated for 300 timesteps</p>
 <p><img alt="alt text" src="../../../../../_images/animation2.gif"/></p>
-
-
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="http://support.xilinx.com/">support.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 <p align="center"> XD068 | © Copyright 2021 Xilinx, Inc.</p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -420,7 +398,6 @@ function OptanonWrapper() { }
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

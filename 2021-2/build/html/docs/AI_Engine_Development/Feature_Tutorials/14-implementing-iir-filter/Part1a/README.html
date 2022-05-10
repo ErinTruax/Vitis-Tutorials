@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,9 +249,8 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Implementing an IIR Filter on the AI Engine - Part 1a</h1>
-<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 
+<p><em><strong>Version: Vitis 2021.2</strong></em></p>
 <h2>Preliminaries</h2>
 <p>We use the <a class="reference external" href="https://www.dsprelated.com/freebooks/filters/Transposed_Direct_Forms.html">transposed direct form II</a> (TDF2) of an IIR filter for <a class="reference external" href="https://www.dsprelated.com/freebooks/filters/Numerical_Robustness_TDF_II.html">numerical robustness</a> and focus on implementing a <a class="reference external" href="https://en.wikipedia.org/wiki/Digital_biquad_filter">biquad</a> section to allow cascading multiple sections to form higher order IIR filters.</p>
 <p>The block diagram for a TDF2 <a class="reference external" href="https://www.dsprelated.com/showarticle/1137.php">IIR biquad filter</a> is shown below</p>
@@ -363,8 +360,6 @@ function OptanonWrapper() { }
 </ul>
 <p>An actual implementation would require populating the registers with data; performing the calculation; going through the pipeline; updating the internal states; extracting the data, etc.; thereby incurring more than 5 cycles for latency.</p>
 <p>We can use (4) to calculate 8 sequential outputs for 1 input signal using <em>one</em> AI engine core. One way to visualize the calculation is to process one column of the matrix of constants <strong>C</strong> at every clock cycle. Since <strong>C</strong> has 12 columns, it would <em>ideally</em> take 12 cycles to generate 8 outputs.</p>
-
-
 <h2>Kernel Code</h2>
 <p>The kernel code (using high-level intrinsics (HLI)) for one second order stage is shown below.</p>
 <p><code class="docutils literal notranslate"><span class="pre">kernel.hpp</span></code></p>
@@ -437,8 +432,6 @@ function OptanonWrapper() { }
 <li><p>The filter states (<code class="docutils literal notranslate"><span class="pre">state_reg</span></code>) need to kept between function calls and thus are declared <code class="docutils literal notranslate"><span class="pre">static</span></code>.</p></li>
 <li><p>Instead of doing a regular matrix-vector multiplication as indicated by (4), each iteration of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop takes the <em>n<sup>th</sup></em> column of the the <strong>C</strong> matrix, and multiplies all the elements of that column with the <em>n<sup>th</sup> element</em> of the <strong>x</strong> vector, i.e., a vector scaling operation.</p></li>
 </ul>
-
-
 <h2>Julia Script Notes</h2>
 <p>To check the functionality of the kernel code, we use use <code class="docutils literal notranslate"><span class="pre">aie_iir_1a.jl</span></code> to generate the coefficients for <em>one</em> second order section, as well as the impulse response. The script will also generate a <a class="reference external" href="https://en.wikipedia.org/wiki/Kronecker_delta">unit sample function</a> as an input to the kernel.</p>
 <p>Some of the user-settable parameters in the Julia script are shown below.</p>
@@ -485,8 +478,6 @@ function OptanonWrapper() { }
 </li>
 <li><p>Copy <code class="docutils literal notranslate"><span class="pre">C1.h</span></code> to the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory, and <code class="docutils literal notranslate"><span class="pre">input.dat</span></code> to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory of the AI engine project (note: this has already been done in the attached project archive)</p></li>
 </ul>
-
-
 <h2>Adaptive Dataflow Graph</h2>
 <p>The adaptive dataflow graph file looks something like this.</p>
 <p><code class="docutils literal notranslate"><span class="pre">graph.hpp</span></code></p>
@@ -545,8 +536,6 @@ function OptanonWrapper() { }
 <li><p><code class="docutils literal notranslate"><span class="pre">source(section1)</span> <span class="pre">=</span> <span class="pre">"kernel.cpp"</span></code> tells the tools where to find the source code for the kernel.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">runtime&lt;ratio&gt;(section1)</span> <span class="pre">=</span> <span class="pre">1.0</span></code> tells the tools that only this kernel can be placed in the AI engine. At this time, the actual execution time is unknown.</p></li>
 </ul>
-
-
 <h2>Testbench Code</h2>
 <p>The testbench code looks something like this.</p>
 <p><code class="docutils literal notranslate"><span class="pre">tb.cpp</span></code></p>
@@ -591,8 +580,6 @@ function OptanonWrapper() { }
 <li><p><code class="docutils literal notranslate"><span class="pre">my_graph.update(my_graph.cmtx1,</span> <span class="pre">C1,</span> <span class="pre">96)</span></code> sends the 96 coefficients for the filter to the kernel</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">my_graph.run(num_iterations)</span></code> runs the kernel 256/8 = 32 times to allow comparison with the impulse response from the Julia script</p></li>
 </ul>
-
-
 <h2>Build and Run the Program</h2>
 <ul class="simple">
 <li><p>Copy the files in <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">dat</span></code> to your project. Set the <code class="docutils literal notranslate"><span class="pre">Top-Level</span> <span class="pre">File</span></code> to <code class="docutils literal notranslate"><span class="pre">src/tb.cpp</span></code>.</p></li>
@@ -622,30 +609,19 @@ function OptanonWrapper() { }
 <p>You may also try modifying and running <code class="docutils literal notranslate"><span class="pre">check.jl</span></code>.</p>
 <p>Since the maximum of the absolute error is less than the <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_epsilon">machine epsilon</a> for <a class="reference external" href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">binary32</a> (<code class="docutils literal notranslate"><span class="pre">Float32</span></code> in Julia), we can conclude that the kernel code is working as expected.</p>
 <p>The complete design is included in the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">src</span></code> directories. Refer to the aie_exp/Part1 tutorial if you are unfamiliar with building a Vitis design from scratch.</p>
-
-
 <h2>Conclusion</h2>
 <p>We provided a Julia script which generates the required coefficients for a second order section of an IIR filter and kernel code to implement it. We used <code class="docutils literal notranslate"><span class="pre">Emulation-SW</span></code> to verify the functionality of the design. The AI engine kernel code implementation shows negligible difference compared to the original filter.</p>
 <p>In Part 1b, we show the process of creating the adaptive dataflow graph for an arbitrary number of cascaded second order sections.</p>
-
-
 <h2>References</h2>
 <p>[1] Julius O. Smith III. “<a class="reference external" href="https://www.dsprelated.com/freebooks/filters/">Introduction to Digital Filters with Audio Applications</a>”</p>
 <p>[2] <a class="reference external" href="https://raphlinus.github.io/audio/2019/02/14/parallel-iir.html">IIR filters can be evaluated in parallel</a></p>
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="http://forums.xilinx.com/">forums.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 <p align="center"><sup>XD108 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -662,7 +638,6 @@ function OptanonWrapper() { }
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

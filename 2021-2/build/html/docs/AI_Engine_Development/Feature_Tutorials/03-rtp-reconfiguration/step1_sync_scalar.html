@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,12 +249,11 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Synchronous Update of Scalar RTP</h1>
+
 <p>Kernel execution depends on the availability of windows of data on their inputs, and the space to write windows of data on their outputs. This example illustrates a complementary method, whereby a kernel will only get triggered to run after a write of data from another processor. This can be an ARM® processor or another AI Engine.</p>
 <p>In this example, a write from an Arm processor causes a partial sine wave to be generated using the direct digital synthesis (DDS) kernel on the AI Engine. The Arm processor can control the frequency of the sine wave by writing different values to the <code class="docutils literal notranslate"><span class="pre">runtime</span></code> parameter. In the HW and HW cosim flow, the AI Engine output is streamed to the PL kernels, and the PS controls the running AI Engine and PL. The following figure shows this example.</p>
 <p><img alt="design structure and flow" src="../../../../_images/figure1.PNG"/></p>
 <p><strong>Note:</strong> The default working directory in this step is “step1”, unless specified explicitly otherwise.</p>
-
 <h2>Review Graph Programming Code</h2>
 <ol>
 <li><p>Examine the header file <code class="docutils literal notranslate"><span class="pre">aie/dds.h</span></code>, of the sine kernel (DDS):</p>
@@ -295,8 +292,6 @@ function OptanonWrapper() { }
 <p>The graph <code class="docutils literal notranslate"><span class="pre">run()</span></code> has been called with the parameter <code class="docutils literal notranslate"><span class="pre">4</span></code> to specify the iteration number of the graph. Otherwise, it will run forever.</p>
 </li>
 </ol>
-
-
 <h2>Review RTP Update Code</h2>
 <ol>
 <li><p>Examine <code class="docutils literal notranslate"><span class="pre">aie/graph.h</span></code> again. The following line is to connect the trigger input port of the graph to the first input port of the dds kernel (i.e., the <code class="docutils literal notranslate"><span class="pre">phase_increment</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">sine</span></code> function).</p>
@@ -341,8 +336,6 @@ void adf::graph::update(input_port &amp;portName, int value);
 <p>Because the <code class="docutils literal notranslate"><span class="pre">runtime</span></code> parameter in this example is synchronous, the graph execution on the AI Engine will start after the first update call for one iteration, then wait for the next trigger by the next update call. Four consecutive update calls will run the graph for four iterations, where the first two iterations use 10 as the value for the <code class="docutils literal notranslate"><span class="pre">phase_increment</span></code> parameter and the last two iterations use 100.</p>
 </li>
 </ol>
-
-
 <h2>Run AI Engine Compiler and AI Engine Simulator</h2>
 <ol>
 <li><p>Run the AI Engine compiler and the AI Engine simulator to verify the functional correctness of the design. Note that <code class="docutils literal notranslate"><span class="pre">graph.cpp</span></code> is only used for the AI Engine simulator, which is a SystemC simulation.</p>
@@ -410,7 +403,6 @@ plot(data(:,2))
 </li>
 </ol>
 <p><img alt="sine waveform - imaginary" src="../../../../_images/figure3.PNG"/></p>
-
 <h3>Build for Hardware Emulation and Hardware Flow</h3>
 <p>In the previous step, you generated the AI Engine design graph (<code class="docutils literal notranslate"><span class="pre">libadf.a</span></code>) using the AI Engine compiler. Note that the graph has instantiated a PLIO (<code class="docutils literal notranslate"><span class="pre">adf::output_plio</span></code> in <code class="docutils literal notranslate"><span class="pre">aie/graph.h</span></code>), which will be connected to the PL side.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```
@@ -560,9 +552,6 @@ v++ -p -t hw_emu -f $PLATFORM_REPO_PATHS/xilinx_vck190_es1_base_202120_1/xilinx_
 <p><code class="docutils literal notranslate"><span class="pre">--package.sd_dir</span> <span class="pre">&lt;arg&gt;</span></code> specifies a directory path to package into the *<code class="docutils literal notranslate"><span class="pre">sd_card*</span> <span class="pre">directory/image</span></code>, which is helpful for including some golden data into the package.</p>
 <p>“<code class="docutils literal notranslate"><span class="pre">--package.sd_file</span> <span class="pre">&lt;arg&gt;</span></code>” is used to specify files to package into the *<code class="docutils literal notranslate"><span class="pre">sd_card*</span> <span class="pre">directory/image</span></code>.</p>
 <p>For more details about <code class="docutils literal notranslate"><span class="pre">v++</span> <span class="pre">-p</span> <span class="pre">(--package)</span></code> options, refer to <em>Application Acceleration Development</em> (UG1393).</p>
-
-
-
 <h2>Deploy for Hardware Emulation and Hardware Flow</h2>
 <p>The final step is to run HW emulation using the following make command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```
@@ -603,8 +592,6 @@ TEST PASSED
 ```
 </pre></div>
 </div>
-
-
 <h2>Conclusion</h2>
 <p>In this step, you learned about the following core concepts:</p>
 <ul class="simple">
@@ -614,21 +601,13 @@ TEST PASSED
 </ul>
 <p>Next, review <a class="reference internal" href="step2_async_scalar.html"><span class="doc">Asynchronous Update of Scalar RTP</span></a>.</p>
 <p>==========</p>
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="http://forums.xilinx.com/">forums.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 <p align="center"><sup>XD001 | © Copyright 2020-2021 Xilinx, Inc.</sup></p><p>==========</p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -645,7 +624,6 @@ TEST PASSED
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

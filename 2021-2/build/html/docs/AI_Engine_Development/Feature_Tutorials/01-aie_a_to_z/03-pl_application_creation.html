@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,9 +249,8 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Introduction</h1>
-<p>In this section of the tutorial, you will learn how to add PL kernels in HLS into the system project and build the whole system.</p>
 
+<p>In this section of the tutorial, you will learn how to add PL kernels in HLS into the system project and build the whole system.</p>
 <h2>Step 1. Modify the Graph for Use in Hardware Build</h2>
 <p>You now have a working application to be run on the AI Engine array. What you need now is to modify the AI Engine graph to be used in hardware and connect the AI Engine array to the PL using the Vitis compiler (V++).</p>
 <ol class="simple">
@@ -285,8 +282,6 @@ function OptanonWrapper() { }
 <ol class="simple">
 <li><p>Change the <em><strong>Active build configuration</strong></em> to <em><strong>Hardware</strong></em> and rebuild the project.</p></li>
 </ol>
-
-
 <h2>Step 2. Add PL Kernels</h2>
 <p>In this example, HLS kernels are used which bridge between memory and the AXI4-Stream interface to input and output data from memory.</p>
 <ul class="simple">
@@ -300,8 +295,6 @@ function OptanonWrapper() { }
 <li><p>In the <em><strong>hw-kernels.prj</strong></em> page, click on the lightning icon (<em><strong>Add HW function</strong></em>) icon and select both functions (<code class="docutils literal notranslate"><span class="pre">mm2s</span></code> and <code class="docutils literal notranslate"><span class="pre">s2mm</span></code>) as hardware functions.</p></li>
 </ol>
 <p><img alt="missing image" src="../../../../_images/hw_kernels.png"/></p>
-
-
 <h2>Step 3. Configure Hardware Linking Project</h2>
 <p>Now that you have imported the kernels, you need to tell the Vitis linker how to connect everything together.</p>
 <ol class="simple">
@@ -333,8 +326,6 @@ For example, to connect the AXI4-Stream interface of the <code class="docutils l
 </pre></div>
 </div>
 <p><img alt="missing image" src="../../../../_images/hw_link_cfg4.png"/></p>
-
-
 <h2>Step 4. Build the System</h2>
 <ol>
 <li><p>Select the <em><strong>simple_application_system</strong></em> project and click on the hammer icon to build it. The compilation process takes some time to finish. The underlying AI Engine application project, hardware kernel project, and hardware linking project are compiled one after another. The system should build successfully with no error.</p>
@@ -359,9 +350,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center" class="sphinxhide"><sup>Copyright© 2020–2021 Xilinx</sup><br/><sup>XD018</sup></p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -378,7 +366,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

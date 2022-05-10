@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,23 +241,19 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table>
 <tr>
 <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/>
 </td>
 </tr>
 <tr>
-<td align="center"><h1>AI Engine Debug with Integrated Logic Analyzer (ILA)</h1>
+<td align="center">
 </td>
 </tr>
 </table><p><a class="reference external" href="#AI_Engine_Debug_with_Integrated_Logic_Analyzer">AI Engine Debug with Integrated Logic Analyzer</a></p>
-
 <h1>AI Engine Debug with Integrated Logic Analyzer (ILA)</h1>
 <p>Adding ChipScope helps debugging AIE PL interfaces in the design running on hardware including checking for AXI protocol violations, hardware kernel issues, data integrity, and performance issues of the design.
 To debug using ILAs, the design is required to enable ILA in hardware build.</p>
-
 <h2>Enable ILA in design</h2>
 <p>This tutorial uses v++ –debug option to enable ILA IP core insertion to the design.
 Syntax:</p>
@@ -272,15 +268,12 @@ Syntax:</p>
 </pre></div>
 </div>
 <p><strong>Note:</strong> v++ allows multiple –debug.chipscope lines to meet design debug needs.</p>
-
 <h3>Step 1. Prepare the ILA enabled Makefile.</h3>
 <p>Use the provided Makefile.ILA from this tutorial’s root directory. Rename Makefile.ILA to Makefile</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">DOWNLOAD_PATH</span><span class="si">}</span>/AI_Engine_Development/Feature_Tutorials/09-debug-walkthrough
 cp Makefile.ILA Makefile
 </pre></div>
 </div>
-
-
 <h3>Step 2. Build the ILA enabled design</h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make clean<span class="p">;</span> make
 </pre></div>
@@ -288,86 +281,50 @@ cp Makefile.ILA Makefile
 <p>After the design is built. Inspect the ILA insertion with mm2s_v4_1:s0 and s2mm_v4_1:s0 interfaces.
 <img src="images/il_vivado0.png" width="900"/>
 <img src="images/il_vivado1.png" width="900"/></p>
-
-
 <h3>Step 3. Boot up the design</h3>
 <p>Flash the SD card with the ILA enabled design, plug in the flashed SD card to VCK190 sd card slot and boot up the board.</p>
-
-
-
 <h2>Setup the connection with Vivado</h2>
-
 <h3>Step 4. Setup Connection to the Hardware Board</h3>
-
 <h4>Step 4.1. Target Connection Setup</h4>
-
 <h5>Run hardware server from computer that connects to target board</h5>
 <p>Launch hw_server from the computer that has JTAG connection to the VCK190 board.
 <img src="images/hw_ta_hw.png" width="600"/></p>
-
-
-
 <h4>Step 4.2. Launch Vivado</h4>
 <p>Launch Vivado™ from where the to be debugged project is by issue command, “vivado”</p>
-
-
 <h4>Step 4.3. Setup Vivado Hardware Manager</h4>
 <p>After Vivado™ is up, click on highlighted icon.
 <img src="images/il_open.png" width="900"/></p>
-
-
 <h4>Step 4.4. Setup Hardware Target</h4>
 <img src="images/il_open_2.png" width="900"/>
-
 <h4>Step 4.5. Input Hardware Target</h4>
 <p>Enter hardware server’s IP address or hostname to highlighted area and click on “Next” icon.
 <img src="images/il_open_3.png" width="900"/></p>
-
-
 <h4>Step 4.6. Check Hardware Target</h4>
 <p>Confirm target’s information from JTAG chain then click on “Next” icon.
 <img src="images/il_open_4.png" width="900"/></p>
-
-
 <h4>Step 4.7. Select probe file</h4>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">...</span></code> to select the generated probe file. It is named <code class="docutils literal notranslate"><span class="pre">bf_hw.ltx</span></code> from this tutorial.
 <img src="images/il_pb_file.png" width="900"/></p>
-
-
 <h4>Step 4.8. Select ILA to be examined.</h4>
 <p>Click on `hw_ila_1’ to examine the design.
 <img src="images/il_pb_menu.png" width="900"/></p>
-
-
 <h4>Step 4.9. Setup design’s signals to be debugged</h4>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">+</span></code> to configure the desired signals and their values during run time.
 <img src="images/il_pb_trig.png" width="900"/>
 <img src="images/il_pb_trig1.png" width="900"/></p>
-
-
 <h4>Step 4.10. Enable ILA to capture the configured signals to debug</h4>
 <p>Click on one of highlighted icons to capture configured signals.
 <img src="images/il_trig_run.png" width="900"/></p>
 <p>Wait for ILA is ready to capture signals, run the application from vck190 board.</p>
-
-
 <h4>Step 4.11. Expected result</h4>
 <img src="images/il_run_done.png" width="900"/><p>After completing above steps, we are able to see the captured, related AXI signals and data are shown in waveform with timing information from Vivado™.</p>
-
-
 <h4>Step 5. Examine captured results</h4>
 <img src="images/il_run_result.png" width="900"/>
 Review above captured result, mm2s_v4_1_s0:TVALID shows '1' indicates a valid data is available at the time marker pointed.
 Moving time marker across time line, changes of AIX protocol valuses indicate values changed at what time shown below.
 <img src="images/il_run_result1.png" width="900"/>
-
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="https://support.xilinx.com/">support.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
@@ -381,8 +338,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center"><sup>XD005 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -399,7 +354,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

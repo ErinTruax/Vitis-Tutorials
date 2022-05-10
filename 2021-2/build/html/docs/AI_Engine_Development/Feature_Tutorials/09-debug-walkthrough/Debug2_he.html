@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table>
 <tr>
 <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/>
@@ -260,39 +258,24 @@ function OptanonWrapper() { }
 </ul>
 <p><a class="reference external" href="#Command-line-project-source-code-debug-with-hardware-emulator"> Command-Line Project Source Code Debug with Hardware Emulator</a></p>
 
-<h1>Hardware Emulation Source Code Debug</h1>
-
 <h2>Step 1 Build</h2>
 <p>Select the build configuration to be <strong>Emulation-HW</strong>.</p>
 <img src="images/he_run_cfg.png" width="200"/><p>Highlight beamformer system project and right-click to select <strong>build project</strong>.
 It takes over 60 minutes to complete the build.</p>
-
-
 <h2>Step 2 Launch Hardware Emulator</h2>
 <img src="images/he_run_init.png" width="450"/><p><strong>Note:</strong> It takes a couple of minutes to launch the emulator and boot up Petalinux.</p>
-
-
 <h2>Step 3 During Debug</h2>
-
 <h3>Step 3.1 Debug - PS</h3>
 <img src="images/he_run_ps.png"/>
-
 <h3>Step 3.2 Debug - AI Engine</h3>
 <img src="images/he_run_aie.png"/><p>AI Engine only debugs within system project via hardware emulator, AI Engine emulator debug still applies. <a href="Debug2_ai.md">AI Engine debug with AIE emulator</a> are applicable at this condition.</p>
-
-
-
-
 <h1>Hardware Emulation Source Code Debug Limitations</h1>
 <ol class="simple">
 <li><p>Limitations from <a href="Debug2_ai.md">AI Engine debug with AIE emulator</a> applies.</p></li>
 <li><p>PL debug is not supported from Vitis™ IDE.</p></li>
 </ol>
-
-
 <h1>Command-Line Project Source Code Debug with Hardware Emulator</h1>
 <p>Use cases that involve using Vitis IDE functionalities without migrating to Vitis IDE are permitted.</p>
-
 <h2>Step 1 Build Project to be Debugged</h2>
 <p>If the project is not built already, use this tutorial’s <code class="docutils literal notranslate"><span class="pre">Makefile.emu</span></code> that has <code class="docutils literal notranslate"><span class="pre">--package.enable_aie_debug</span></code> option in the packaging step. This option inserts configuration data object (CDO) that generates stop requests for the AI Engine cores, so that they stop at the reset vector. This option is required to add debug capabilities. Issue command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">package_dbg</span></code> with this tutorial’s <code class="docutils literal notranslate"><span class="pre">Makefile.emu</span></code> to package binaries that can be debugged.
 Note: The packaged binaries that have debug capabilities require to run with debugger. Run without debugger will see execution hang due to wait for debugger invocation. Run command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">package</span></code> to package back regular binaries.</p>
@@ -301,8 +284,6 @@ make
 make package_dbg
 </pre></div>
 </div>
-
-
 <h2>Step 2 Launch Hardware Emulator and Boot Petalinux</h2>
 <p>From terminal 1, setup tool path properly and issue this command to launch hardware emulator and boot up Petalinux.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./launch_hw_emu.sh -add-env <span class="nv">ENABLE_RDWR_DEBUG</span><span class="o">=</span><span class="nb">true</span> -add-env <span class="nv">RDWR_DEBUG_PORT</span><span class="o">=</span><span class="m">10100</span> -pid-file emulation.pid -no-reboot -forward-port <span class="m">1440</span> <span class="m">1534</span>
@@ -321,8 +302,6 @@ make package_dbg
 <li><p>Previous command takes a few minutes to complete due to both hardware emulator and Petalinux are required to boot up properly.</p></li>
 <li><p>Wait until both hardware server and Petalinux boot up BEFORE moving to next steps.</p></li>
 </ol>
-
-
 <h2>Step 3 Launch Vitis IDE and XRT server</h2>
 <p>From terminal 2, setup tool path properly and issue this command to launch XRT server and Vitis IDE.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vitis -debug -flow embedded_accel -target hw_emu -exe ./host.exe -program-args ./a.xclbin -port <span class="m">1440</span>
@@ -344,35 +323,23 @@ xrt_server -I30000 -S -s tcp::4352
 <p>Expected result
 <img src="images/he_temp_run.png"/></p>
 <p><strong>Note:</strong> The previously listed step takes a couple of minutes to complete.</p>
-
-
 <h2>Step 4 Setup Vitis AI Engine Debug Configuration</h2>
-
 <h3>Step 4.1 Configure Debug using Click-on Debug Icon</h3>
 <img src="images/he_cl_config0.png" width="300"/>
-
 <h3>Step 4.2 Under “Single Application Debug” to Create a New Debug Configuration</h3>
 <img src="images/he_cl_config1.png" width="600"/>
-
 <h3>Step 4.3 Setup New Debug Type Name and Connection</h3>
 <img src="images/he_cl_config2.png" width="600"/>
-
 <h3>Step 4.4 Setup New Connection Name, Host, and Port</h3>
 <img src="images/he_cl_config3.png" width="600"/>
-
 <h3>Step 4.5 Setup Execute Script of Newly Created Debug Type</h3>
 <img src="images/he_cl_config4.png" width="600"/><p><strong>Note:</strong> The script, <strong>aie_app_debug_em.tcl</strong> is provided in this tutorial and needs to be updated to match your environment settings. The <code class="docutils literal notranslate"><span class="pre">aie_work_dir</span></code> variable should be the Work folder inside this lab –e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">aie_work_dir</span> <span class="pre">"${PROJECT_PATH}/beamformer/Work/"</span></code> and <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">vitis_install</span> <span class="pre">"${XILINX_VITIS_PATH}/Xilinx/Vitis/2021.2"</span></code></p>
-
-
 <h3>Step 4.6 Close the debug configuration</h3>
 <img src="images/he_cl_config5.png" width="600"/>
-
 <h3>Step 4.7 Run PS (by resume) Application so AI Engine can be Initialized and Debugged</h3>
 <img src="images/he_cl_config6.png" width="450"/>
-
 <h3>Step 4.8 Wait until PS has Initialized AI Engine and Observe “Starting graph run” from Console</h3>
 <img src="images/he_cl_config6_1.png" width="600"/>
-
 <h3>Step 4.9 Launch AI Engine Debugger to Debug the AI Engine Sub-project</h3>
 <img src="images/he_cl_config0.png" width="300"/>
 <img src="images/he_cl_config7.png" width="600"/><p><strong>Note:</strong></p>
@@ -381,24 +348,15 @@ xrt_server -I30000 -S -s tcp::4352
 <li><p>Step 4.7 requires to start PS application BEFORE launching debugger to debug AI Engine sub-project. Will see issues if above step sequence is not followed.</p></li>
 <li><p>It takes some time depends on number of times in design to launch AI Engine debugger completely. Beamformer design contains 64 tiles that needs several minutes to complete.</p></li>
 </ol>
-
-
-
 <h2>Step 5 Expected Vitis IDE</h2>
 <img src="images/he_cl_run.png"/>
-
 <h2>Step 6 Clean up Launched Processes</h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>killall -9 pllauncher<span class="p">;</span> killall -9 qemu-system-aarch64<span class="p">;</span> killall -9 xrt_server
 </pre></div>
 </div>
 <p>These commands kill leftover processes for this debug run.</p>
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="https://support.xilinx.com/">support.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
@@ -412,8 +370,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <p align="center"><sup>XD005 | © Copyright 2021 Xilinx, Inc.</sup></p>
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -430,7 +386,6 @@ limitations under the License.</p>
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

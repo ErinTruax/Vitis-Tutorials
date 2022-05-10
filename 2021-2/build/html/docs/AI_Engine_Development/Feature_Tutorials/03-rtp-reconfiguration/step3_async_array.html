@@ -7,9 +7,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description"/>
 <meta name="keywords"/>
@@ -241,8 +241,6 @@ function OptanonWrapper() { }
 </ul>
 <hr/>
 </div>
-
-
 <table class="sphinxhide" width="100%">
 <tr width="100%">
 <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/>
@@ -251,11 +249,10 @@ function OptanonWrapper() { }
 </td>
 </tr>
 </table>
-<h1>Asynchronous Update of Array RTP</h1>
+
 <p>This step demonstrates how runtime array parameters can be passed to kernels. You will change the filter coefficient at runtime and observe the result. The system to be implemented is as follows.</p>
 <p><img alt="missing image" src="../../../../_images/figure4.PNG"/></p>
 <p><strong>Note:</strong> The default working directory in this step is “step3”, unless specified explicitly otherwise.</p>
-
 <h2>Review Graph and RTP Code</h2>
 <p><code class="docutils literal notranslate"><span class="pre">aie/fir24_sym_param.h</span></code>gives a forward declaration of a 24-tap symmetric FIR filter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">fir24_sym</span><span class="p">(</span><span class="n">input_window</span><span class="o">&lt;</span><span class="n">cint16</span><span class="o">&gt;</span> <span class="o">*</span> <span class="n">iwin</span><span class="p">,</span> <span class="n">output_window</span><span class="o">&lt;</span><span class="n">cint16</span><span class="o">&gt;</span> <span class="o">*</span> <span class="n">owin</span><span class="p">,</span>  <span class="n">const</span> <span class="n">int32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">coeffs</span><span class="p">)[</span><span class="mi">12</span><span class="p">]);</span>
@@ -283,8 +280,6 @@ Then update the coefficients using <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 <p>In this snippet, the first graph update call initializes the coefficients parameter using the <code class="docutils literal notranslate"><span class="pre">narrow_filter</span></code> with 12 elements for the first 16 iterations. The <code class="docutils literal notranslate"><span class="pre">wait()</span></code> is blocking, and forces the execution to wait until the first 16 iterations finish. Subsequently, the next update call initializes the coefficients parameter using <code class="docutils literal notranslate"><span class="pre">wide_filter</span></code> with 12 elements for the next 16 iterations. The number of iterations are specified as a parameter to the <code class="docutils literal notranslate"><span class="pre">run()</span></code> API. Note that <code class="docutils literal notranslate"><span class="pre">update()</span></code> has a third parameter that speicfies the size of the array to be updated.</p>
-
-
 <h2>Run the AI Engine Compiler and AI Engine Simulator</h2>
 <p>Compile the AI Engine graph (<code class="docutils literal notranslate"><span class="pre">libadf.a</span></code>) using the AI Engine compiler:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">aie</span>
@@ -312,8 +307,6 @@ Then update the coefficients using <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 <p><img alt="missing image" src="../../../../_images/figure6.PNG"/></p>
-
-
 <h2>Run Hardware Emulation and Hardware Flow</h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">pl_kernels</span></code> directory contains a kernel that generates samples of random noise. The noise generator is implemented as a free-running programmable logic (PL) kernel, with samples consumed by the filter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extern</span> <span class="s2">"C"</span> <span class="n">void</span> <span class="n">random_noise</span><span class="p">(</span><span class="n">hls</span><span class="p">::</span><span class="n">stream</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="nb">complex</span><span class="o">&lt;</span><span class="n">short</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
@@ -357,8 +350,6 @@ Then update the coefficients using <code class="docutils literal notranslate"><s
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEST</span> <span class="n">PASSED</span>
 </pre></div>
 </div>
-
-
 <h2>Conclusion</h2>
 <p>In this step you learned about:</p>
 <ul class="simple">
@@ -368,21 +359,13 @@ Then update the coefficients using <code class="docutils literal notranslate"><s
 </ul>
 <p>Next, review <a class="reference internal" href="step4_async_aie_array.html"><span class="doc">Asynchronous Update of Array RTP Update for AI Engine Kernel</span></a>.</p>
 <p>==========</p>
-
-
-
 <h1>Support</h1>
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="http://forums.xilinx.com/">forums.xilinx.com</a>.</p>
-
-
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
 <p align="center"><sup>XD001 | © Copyright 2020-2021 Xilinx, Inc.</sup></p><p>==========</p>
-
-
-
 <footer>
 <!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
 </footer>
@@ -399,7 +382,6 @@ Then update the coefficients using <code class="docutils literal notranslate"><s
 <br/>
 </div>
 </section></div>
-
 <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
