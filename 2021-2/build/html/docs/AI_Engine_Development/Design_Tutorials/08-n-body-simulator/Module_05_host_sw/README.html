@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -297,7 +297,6 @@ function OptanonWrapper() { }
 <li><p><code class="docutils literal notranslate"><span class="pre">host/main_animate.cpp</span></code> - Host application that runs the design for multiple iterations and saves position data to a file to post-process and create an <code class="docutils literal notranslate"><span class="pre">animation.gif</span></code> later.</p></li>
 </ul>
 <p>The NBodySimulator API is a C++ implementation of an N-Body Simulator which runs on the native A72 processor. It also writes the position data to an <code class="docutils literal notranslate"><span class="pre">animation_data.txt</span></code> file which you will post-process later to create an <code class="docutils literal notranslate"><span class="pre">animation.gif</span></code>.</p>
-
 <p>The Logger API is used to save logging messages from the host applications to the <code class="docutils literal notranslate"><span class="pre">run.log</span></code> file. The host application can set the log level of which messages are written to the <code class="docutils literal notranslate"><span class="pre">run.log</span></code> and which messages are shown on the console during execution. By default, the log level is set to <code class="docutils literal notranslate"><span class="pre">LMESSAGE</span></code>, meaning all messages will be written to <code class="docutils literal notranslate"><span class="pre">run.log</span></code>. The cout log level is set to <code class="docutils literal notranslate"><span class="pre">LINFO</span></code>, meaning any messages set to <code class="docutils literal notranslate"><span class="pre">LINFO</span></code> will be also displayed on the output console during execution.</p>
 <h2>Log Levels:</h2>
 <ul class="simple">
@@ -306,7 +305,7 @@ function OptanonWrapper() { }
 <li><p>LERROR</p></li>
 <li><p>LNONE</p></li>
 </ul>
-<h1>Host Applications</h1>
+
 <p>The <code class="docutils literal notranslate"><span class="pre">host/main_xrt.cpp</span></code> host application is compiled into the <code class="docutils literal notranslate"><span class="pre">build/ps_app.exe</span></code> executable. This host application reads in the <code class="docutils literal notranslate"><span class="pre">m2s_i.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">input_j.txt</span></code> files that initalize the <code class="docutils literal notranslate"><span class="pre">m2s_x2</span></code> PL kernel’s <code class="docutils literal notranslate"><span class="pre">ibuff</span></code> and <code class="docutils literal notranslate"><span class="pre">jbuff</span></code> DDR buffer inputs.  This host application starts the PL kernels and the AI Engine graph and waits for one iteration of data to flow through the design. Once the <code class="docutils literal notranslate"><span class="pre">s2m_x4</span></code> PL kernel completes, this host application compares the AI Engine output to the golden output files (<code class="docutils literal notranslate"><span class="pre">s2m_x4_k0.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">s2m_x4_k1.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">s2m_x4_k2.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2m_x4_k3.txt</span></code> files). If there are any data mismatches, then the <code class="docutils literal notranslate"><span class="pre">TEST</span> <span class="pre">FAILED</span></code>, else the <code class="docutils literal notranslate"><span class="pre">TEST</span> <span class="pre">PASSED</span></code>. If you provide the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> command line input, this host application also calculates the execution times for the C++ N-Body Simulator and the AI Engine N-Body Simulator for comparison.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">host/main_animate.cpp</span></code> host application is compiled into the <code class="docutils literal notranslate"><span class="pre">build/ps_animate.exe</span></code> executable. This host application does the following:</p>
 <ul class="simple">

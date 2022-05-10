@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -272,7 +272,6 @@ It takes over 60 minutes to complete the build.</p>
 <li><p>Limitations from <a href="Debug2_ai.md">AI Engine debug with AIE emulator</a> applies.</p></li>
 <li><p>PL debug is not supported from Vitis™ IDE.</p></li>
 </ol>
-
 <p>Use cases that involve using Vitis IDE functionalities without migrating to Vitis IDE are permitted.</p>
 <h2>Step 1 Build Project to be Debugged</h2>
 <p>If the project is not built already, use this tutorial’s <code class="docutils literal notranslate"><span class="pre">Makefile.emu</span></code> that has <code class="docutils literal notranslate"><span class="pre">--package.enable_aie_debug</span></code> option in the packaging step. This option inserts configuration data object (CDO) that generates stop requests for the AI Engine cores, so that they stop at the reset vector. This option is required to add debug capabilities. Issue command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">package_dbg</span></code> with this tutorial’s <code class="docutils literal notranslate"><span class="pre">Makefile.emu</span></code> to package binaries that can be debugged.
@@ -353,7 +352,7 @@ xrt_server -I30000 -S -s tcp::4352
 </pre></div>
 </div>
 <p>These commands kill leftover processes for this debug run.</p>
-<h1>Support</h1>
+
 <p>GitHub issues will be used for tracking requests and bugs. For questions go to <a class="reference external" href="https://support.xilinx.com/">support.xilinx.com</a>.</p>
 <h1>License</h1>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);

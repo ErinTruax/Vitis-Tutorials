@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -294,7 +294,6 @@ Selecting <code class="docutils literal notranslate"><span class="pre">each</spa
 <li><p>If an individual kernel is highlighted, select the resume button to continue execution until next breakpoint or blocked to wait for I/O. If highlight the beamformer design, select resume button to resume all kernels execution until meet each kernel’s breakpoint or blocked  waiting for each kernel’s I/O operation.</p></li>
 <li><p>Due to compiler optimization, some variables’ values are stored in registers. “N/A” is shown in variables view for those optimized variables’ values.</p></li>
 </ol>
-
 <h2>Step 1: Configuration Before Launching AI Engine Simulator</h2>
 <p>Highlight beamformer sub-project, right-click to select <strong>Run As</strong> &gt; <strong>Run configurations…</strong> to enter into a configuration that allows trace and profile selection.</p>
 <img src="images/aie_sim_init.png" width="450"/><p><strong>Note:</strong> Enable VCD generation for event trace and enable profile generation for selected/all tiles.</p>
@@ -308,7 +307,7 @@ Vitis™ IDE console displays <code class="docutils literal notranslate"><span c
 <img src="images/aie_sim_va_launch.png"/></p>
 <img src="images/aie_sim_va.png"/>
 <img src="images/aie_sim_profile.png"/><p><strong>Note:</strong> Click on <strong>Trace</strong> for generated event trace info. Click on <strong>Profile</strong> for selected AI Engine tiles’ profile report files. These events are timing approximately accurate and can be a good reference for how the design runs.</p>
-<h1>3. AI Engine Emulator <code class="docutils literal notranslate"><span class="pre">printf</span></code> Support</h1>
+
 <p>The simplest form of tracing is to use a formatted <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statement in the code for printing debug messages. Visual inspection of intermediate values and addresses can help you understand the progress of program execution. No additional include files are necessary for using <code class="docutils literal notranslate"><span class="pre">printf()</span></code> other than standard C/C++ includes (<code class="docutils literal notranslate"><span class="pre">stdio.h</span></code>). You can add <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statements to your code to be processed during simulation, or hardware emulation, and remove them or comment them out for hardware builds.</p>
 <h2>Step 1. Add <code class="docutils literal notranslate"><span class="pre">printf</span></code> statement in source code</h2>
 <p>Select <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> file in Vitis IDE to be edited. Add <code class="docutils literal notranslate"><span class="pre">printf("prbcnt=%d\n",</span> <span class="pre">prbcnt);</span></code> statement at line 42 of <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> file.</p>

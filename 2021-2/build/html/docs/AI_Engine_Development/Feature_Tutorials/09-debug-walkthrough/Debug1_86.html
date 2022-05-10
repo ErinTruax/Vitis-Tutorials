@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -287,7 +287,6 @@ For example, Compare <code class="docutils literal notranslate"><span class="pre
 <h2>Step 2.4 Expected Result</h2>
 <p>Expect to observe the output of <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statement displayed at Vitis IDE console window.
 <img src="images/86_sw_printf.png" width="600"/></p>
-
 <p><code class="docutils literal notranslate"><span class="pre">x86simulator</span></code> supports output array data value via printf().</p>
 <h2>Step 3.1 Add printf() in source code</h2>
 <p>Add these three lines at line 52 of <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> and recompile the AI Engine domain project.</p>
@@ -303,7 +302,7 @@ For example, Compare <code class="docutils literal notranslate"><span class="pre
 <img src="images/86_printf_array.png" width="600"/><p>Note: With the AI Engine simulator the –profile option is required in order to observe <code class="docutils literal notranslate"><span class="pre">printf()</span></code> outputs but with <code class="docutils literal notranslate"><span class="pre">x86simulator</span></code> no additional options are needed to enable <code class="docutils literal notranslate"><span class="pre">printf()</span></code> calls. This is one of the benefits of the <code class="docutils literal notranslate"><span class="pre">x86simulator</span></code>.</p>
 <h2>Step 3.4 Reverse Added printf() Statements</h2>
 <p>Remove added three lines from line 52 of <code class="docutils literal notranslate"><span class="pre">bf8x8_fst_api.cpp</span></code> for other features.</p>
-<h1>4. Vitis IDE Debugger Support</h1>
+
 <h2>Step 4.1 Launch SW Emulator Debugger</h2>
 <img src="images/86_IDE_debug0.png" width="600"/>
 <h2>Step 4.2 Debug Run Time</h2>

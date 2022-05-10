@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -837,7 +837,6 @@ To run emulation use the following command (default TARGET=hw_emu, N_FIR_FILTERS
 </pre></div>
 </div>
 <p>After execution completes and the testcase passes data integrity check, ‘TEST PASSED’ should appear on the terminal.</p>
-
 <details>
 <summary>FIR Filter HLS Implementation Architecture</summary>
 <h2>FIR Filter HLS Implementation Architecture</h2>
@@ -874,7 +873,7 @@ Some additional details regarding the data mover kernels include:</p>
 <li><p>The data width is 128 bits</p></li>
 <li><p>To avoid bandwidth limitation resulting in back pressure which causes performance degradation, the HLS pragma <code class="docutils literal notranslate"><span class="pre">max_write_burst_length</span></code> is set higher than the default to 256 bits.</p></li>
 </ul>
-<h1>Software Design Details</h1>
+
 <p>The software design in the FIR Filter HLS implementation consists of the following sections:</p>
 <details>
 <summary>PL Kernels</summary>

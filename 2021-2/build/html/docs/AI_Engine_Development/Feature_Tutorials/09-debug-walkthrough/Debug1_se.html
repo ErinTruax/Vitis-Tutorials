@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -306,7 +306,6 @@ Add environment variables to software emulation run configuration and debug conf
 <p>Software emulator output files from design are located at <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/data</span></code>. Verify the output files <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/data/dlbf_out[0-7].txt</span></code> and <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/data/ulbf_out[0-3].txt</span></code> against golden files <code class="docutils literal notranslate"><span class="pre">${PROJECT}/data/dlbf_gold[0-7].txt</span></code> and <code class="docutils literal notranslate"><span class="pre">${PROJECT}/data/ulbf_gold[0-3].txt</span></code> to ensure that the design’s I/O functionalities are correct. Vitis IDE supports <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">with</span></code> feature to compare two files, highlight two files to be compared then right click one of highlighted file and select <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">with</span></code> then <code class="docutils literal notranslate"><span class="pre">each</span> <span class="pre">other</span></code>.
 For example, Compare <code class="docutils literal notranslate"><span class="pre">${PROJECT}/data/ulbf_gold3.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">${PROJECT}/Emulation-SW/data/ulbf_out3.txt</span></code></p>
 <img src="images/se_compare.png" width="600"/>
-
 <h2>Step 3.1 Launch Software Emulation Debugger</h2>
 <img src="images/se_debug.png" width="450"/>
 <h2>Step 3.2 Debug with Software Emulator</h2>
@@ -316,7 +315,7 @@ For example, Compare <code class="docutils literal notranslate"><span class="pre
 <img src="images/se_debug2.png" width="900"/></p>
 <p>Note: Accessing vector variables values from software emulator is not fully supported. Recommend using <code class="docutils literal notranslate"><span class="pre">x86simulator</span></code> to inspect vector variables values.
 <img src="images/se_debug3.png" width="900"/></p>
-<h1>4. Command line project build and run with software emulator</h1>
+
 <h2>Step 4.1 Download the project</h2>
 <p>Clone the project source from git repository and unzip the downloaded zip file.</p>
 <h2>Step 4.2 Prepare Makefiles and source code</h2>

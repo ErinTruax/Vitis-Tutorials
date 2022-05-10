@@ -11,8 +11,8 @@
 <link href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css" rel="stylesheet"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description">
-<meta name="keywords"/>
+<meta name="description"/>
+<meta name="keywords">
 <meta content="" property="og:title"/>
 <meta property="og:description"/>
 <!-- favicon -->
@@ -910,7 +910,6 @@ and do:
 <span class="o">./</span><span class="n">fft_2d_aie_xrt</span><span class="o">.</span><span class="n">elf</span> <span class="n">a</span><span class="o">.</span><span class="n">xclbin</span>
 </pre></div>
 </div>
-
 <details>
 <summary>2D-FFT AI Engine Implementation Architecture and AI Engine/PL Function Partitioning</summary>
 <h2>2D-FFT AI Engine Implementation Architecture and AI Engine/PL Function Partitioning</h2>
@@ -943,7 +942,7 @@ and do:
 <li><p>It internally comprises four loops (<code class="docutils literal notranslate"><span class="pre">mm2s0</span></code>, <code class="docutils literal notranslate"><span class="pre">s2mm0</span></code>, <code class="docutils literal notranslate"><span class="pre">mm2s1</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2mm1</span></code>), with <code class="docutils literal notranslate"><span class="pre">s2mm0</span></code> - <code class="docutils literal notranslate"><span class="pre">mm2s1</span></code> sequenced one after the other and wrapped into the <code class="docutils literal notranslate"><span class="pre">dmaHls_rowsToCols</span></code> function. <code class="docutils literal notranslate"><span class="pre">mm2s0</span></code>, <code class="docutils literal notranslate"><span class="pre">dmaHls_rowsToCols</span></code>, and <code class="docutils literal notranslate"><span class="pre">s2mm1</span></code> are concurrently scheduled.</p></li>
 <li><p>The data width is 128 bits at both the AXI4-stream I/O sides, running at 250 MHz.</p></li>
 </ul>
-<h1>Software Design Details</h1>
+
 <p>The software design in the AI Engine 2D-FFT tutorial consists of the following sections:</p>
 <details>
 <summary>Methodology</summary>
