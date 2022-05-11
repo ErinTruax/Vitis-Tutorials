@@ -6,10 +6,9 @@ from bs4 import BeautifulSoup
 def handle_html(filename):
     file = open(filename, 'r+', encoding="utf-8")
     soup = BeautifulSoup(file, 'html.parser')
-    print(type(soup))
     soup = soup.find('div', {"class": "rst-content"})
-    print(type(soup))
-
+    if soup == None:
+            return
     sections = soup.findAll('div', {"class": "section"})
     documents = soup.findAll('div', {"class": "document"})
     navigation_bar = soup.find('div', {"role": "navigation"})
