@@ -43,6 +43,7 @@ jobs:
             pwd
             zip -r AI.zip . 
             echo "Hello World!!"
+            python upload_to_ft.py
 
     - name: setup git config
       run: |
