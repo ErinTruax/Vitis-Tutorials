@@ -1,14 +1,18 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: AI_Engine_Development
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the 2022.1 branch
   push:
     branches: [ gh-pages ]
+    paths:
+      - 2021-2/source/docs/AI_Engine_Development/**
   pull_request:
     branches: [ gh-pages ]
+    paths:
+      - 2021-2/source/docs/AI_Engine_Development/**
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
